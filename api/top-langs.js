@@ -1,5 +1,16 @@
 // @ts-check
 
+// Suppress url.parse() deprecation warnings from dependencies
+if (typeof process !== "undefined" && process.env) {
+  process.removeAllListeners("warning");
+  process.on("warning", (warning) => {
+    if (warning.name === "DeprecationWarning" && warning.message.includes("url.parse()")) {
+      return; // Suppress this specific warning
+    }
+    console.warn(warning);
+  });
+}
+
 import { renderTopLanguages } from "../src/cards/top-languages.js";
 import { guardAccess } from "../src/common/access.js";
 import {
