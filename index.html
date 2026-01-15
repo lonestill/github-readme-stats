@@ -48,391 +48,671 @@
       from { transform: translateX(100%); opacity: 0; }
       to { transform: translateX(0); opacity: 1; }
     }
+    .card-example {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card-example:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    .tab-button {
+      transition: all 0.2s;
+    }
+    .tab-button.active {
+      background: #3b82f6;
+      color: white;
+    }
   </style>
 </head>
 <body class="text-slate-200">
+  <!-- Hero Section -->
   <div class="container mx-auto px-4 py-8 max-w-7xl">
-    <div class="text-center mb-8">
-      <h1 class="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+    <div class="text-center mb-12">
+      <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
         GitHub Readme Stats
       </h1>
-      <p class="text-slate-400">Generate beautiful stats cards for your GitHub profile</p>
+      <p class="text-xl text-slate-400 mb-6">Generate beautiful stats cards for your GitHub profile</p>
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a href="#constructor" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+          🎨 Card Constructor
+        </a>
+        <a href="#gallery" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+          📸 Card Gallery
+        </a>
+        <a href="https://github.com/lonestill/github-readme-stats/blob/master/readme.md" target="_blank" class="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+          📚 Documentation
+        </a>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <!-- Configuration Panel -->
-      <div class="space-y-6">
-        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
-          <div class="flex justify-between items-center mb-4">
-            <h2 class="text-2xl font-bold text-blue-400">Card Configuration</h2>
-            <div class="flex gap-2">
-              <button onclick="saveConfig()" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm">
-                💾 Save
-              </button>
-              <button onclick="loadConfig()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">
-                📂 Load
-              </button>
-              <button onclick="exportConfig()" class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-sm">
-                📤 Export
-              </button>
-              <button onclick="importConfig()" class="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded text-sm">
-                📥 Import
-              </button>
-            </div>
+    <!-- Card Gallery -->
+    <div id="gallery" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center text-blue-400">Card Gallery</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Stats Card -->
+        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 card-example">
+          <h3 class="text-xl font-bold mb-3 text-blue-400">📊 Stats Card</h3>
+          <div class="bg-white rounded p-4 mb-4">
+            <img src="/api?username=lonestill&theme=tokyonight&hide_border=true" alt="Stats Card" class="w-full" />
           </div>
-          
-          <div class="space-y-4">
-            <div>
-              <label class="block text-sm font-medium mb-2">GitHub Username</label>
-              <input 
-                type="text" 
-                id="username" 
-                value="lonestill"
-                class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
-                placeholder="Enter your GitHub username">
-            </div>
-
-            <div>
-              <label class="block text-sm font-medium mb-2">Card Type</label>
-              <select id="cardType" class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
-                <option value="stats">Stats Card</option>
-                <option value="top-langs">Top Languages</option>
-                <option value="pin">Repository Pin</option>
-                <option value="gist">Gist Card</option>
-                <option value="wakatime">WakaTime Stats</option>
-                <option value="trophy">Trophy Card</option>
-                <option value="streak">Streak Card</option>
-                <option value="activity-graph">Activity Graph</option>
-              </select>
-            </div>
-
-            <!-- Presets -->
-            <div class="bg-slate-900 rounded p-4 border border-slate-700">
-              <label class="block text-sm font-medium mb-2">Quick Presets</label>
-              <div class="flex flex-wrap gap-2">
-                <button onclick="applyPreset('minimal')" class="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1 rounded text-xs">
-                  Minimal
-                </button>
-                <button onclick="applyPreset('detailed')" class="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1 rounded text-xs">
-                  Detailed
-                </button>
-                <button onclick="applyPreset('dark')" class="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1 rounded text-xs">
-                  Dark Theme
-                </button>
-                <button onclick="applyPreset('colorful')" class="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1 rounded text-xs">
-                  Colorful
-                </button>
-              </div>
-            </div>
-
-            <!-- Stats Card Options -->
-            <div id="statsOptions" class="space-y-4">
-              <div>
-                <label class="block text-sm font-medium mb-2">Theme</label>
-                <select id="theme" class="theme-select w-full">
-                  <option value="default">Default</option>
-                  <option value="dark">Dark</option>
-                  <option value="radical">Radical</option>
-                  <option value="merko">Merko</option>
-                  <option value="gruvbox">Gruvbox</option>
-                  <option value="tokyonight">Tokyo Night</option>
-                  <option value="onedark">One Dark</option>
-                  <option value="cobalt">Cobalt</option>
-                  <option value="synthwave">Synthwave</option>
-                  <option value="highcontrast">High Contrast</option>
-                  <option value="dracula">Dracula</option>
-                  <option value="transparent">Transparent</option>
-                  <option value="prussian">Prussian</option>
-                  <option value="monokai">Monokai</option>
-                  <option value="vue">Vue</option>
-                  <option value="vue-dark">Vue Dark</option>
-                  <option value="shades-of-purple">Shades of Purple</option>
-                  <option value="nightowl">Night Owl</option>
-                  <option value="buefy">Buefy</option>
-                  <option value="blue-green">Blue Green</option>
-                  <option value="algolia">Algolia</option>
-                  <option value="great-gatsby">Great Gatsby</option>
-                  <option value="darcula">Darcula</option>
-                  <option value="bear">Bear</option>
-                  <option value="solarized-dark">Solarized Dark</option>
-                  <option value="solarized-light">Solarized Light</option>
-                  <option value="chartreuse-dark">Chartreuse Dark</option>
-                  <option value="nord">Nord</option>
-                  <option value="gotham">Gotham</option>
-                  <option value="material-palenight">Material Palenight</option>
-                  <option value="graywhite">Gray White</option>
-                  <option value="vision-friendly-dark">Vision Friendly Dark</option>
-                  <option value="ayu-mirage">Ayu Mirage</option>
-                  <option value="midnight-purple">Midnight Purple</option>
-                  <option value="calm">Calm</option>
-                  <option value="omni">Omni</option>
-                  <option value="react">React</option>
-                  <option value="jolly">Jolly</option>
-                  <option value="maroongold">Maroon Gold</option>
-                  <option value="yeblu">Yeblu</option>
-                  <option value="blueberry">Blueberry</option>
-                  <option value="slateorange">Slate Orange</option>
-                  <option value="kacho_ga">Kacho Ga</option>
-                  <option value="outrun">Outrun</option>
-                  <option value="ocean_dark">Ocean Dark</option>
-                  <option value="city_lights">City Lights</option>
-                  <option value="github_dark">GitHub Dark</option>
-                  <option value="github_dark_dimmed">GitHub Dark Dimmed</option>
-                  <option value="discord_old_blurple">Discord Old Blurple</option>
-                  <option value="aura_dark">Aura Dark</option>
-                  <option value="panda">Panda</option>
-                  <option value="noctis_minimus">Noctis Minimus</option>
-                  <option value="cobalt2">Cobalt2</option>
-                  <option value="swift">Swift</option>
-                  <option value="aura">Aura</option>
-                  <option value="apprentice">Apprentice</option>
-                  <option value="moltack">Moltack</option>
-                  <option value="codeSTACKr">CodeSTACKr</option>
-                  <option value="rose_pine">Rose Pine</option>
-                  <option value="catppuccin_latte">Catppuccin Latte</option>
-                  <option value="catppuccin_mocha">Catppuccin Mocha</option>
-                  <option value="date_night">Date Night</option>
-                  <option value="one_dark_pro">One Dark Pro</option>
-                  <option value="rose">Rose</option>
-                  <option value="holi">Holi</option>
-                  <option value="neon">Neon</option>
-                  <option value="blue_navy">Blue Navy</option>
-                  <option value="calm_pink">Calm Pink</option>
-                  <option value="ambient_gradient">Ambient Gradient</option>
-                </select>
-              </div>
-
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-sm font-medium mb-2">Show Icons</label>
-                  <input type="checkbox" id="showIcons" class="w-5 h-5">
-                </div>
-                <div>
-                  <label class="block text-sm font-medium mb-2">Hide Border</label>
-                  <input type="checkbox" id="hideBorder" class="w-5 h-5">
-                </div>
-                <div>
-                  <label class="block text-sm font-medium mb-2">Hide Rank</label>
-                  <input type="checkbox" id="hideRank" class="w-5 h-5">
-                </div>
-                <div>
-                  <label class="block text-sm font-medium mb-2">Include All Commits</label>
-                  <input type="checkbox" id="includeAllCommits" class="w-5 h-5">
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium mb-2">Hide Stats (comma-separated)</label>
-                <input 
-                  type="text" 
-                  id="hideStats"
-                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
-                  placeholder="stars,commits,prs,issues,contribs">
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium mb-2">Custom Title</label>
-                <input 
-                  type="text" 
-                  id="customTitle"
-                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
-                  placeholder="Custom card title">
-              </div>
-            </div>
-
-            <!-- Top Langs Options -->
-            <div id="topLangsOptions" class="space-y-4 hidden">
-              <div>
-                <label class="block text-sm font-medium mb-2">Theme</label>
-                <select id="topLangsTheme" class="theme-select w-full">
-                  <option value="tokyonight">Tokyo Night</option>
-                  <option value="dark">Dark</option>
-                  <option value="radical">Radical</option>
-                  <option value="dracula">Dracula</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-2">Layout</label>
-                <select id="layout" class="theme-select w-full">
-                  <option value="normal">Normal</option>
-                  <option value="compact">Compact</option>
-                  <option value="donut">Donut</option>
-                  <option value="donut-vertical">Donut Vertical</option>
-                  <option value="pie">Pie</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-2">Languages Count (1-20)</label>
-                <input 
-                  type="number" 
-                  id="langsCount"
-                  min="1"
-                  max="20"
-                  value="5"
-                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
-              </div>
-            </div>
-
-            <!-- Pin Options -->
-            <div id="pinOptions" class="space-y-4 hidden">
-              <div>
-                <label class="block text-sm font-medium mb-2">Repository Name</label>
-                <input 
-                  type="text" 
-                  id="repoName"
-                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
-                  placeholder="repository-name">
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-2">Show Owner</label>
-                <input type="checkbox" id="showOwner" class="w-5 h-5">
-              </div>
-            </div>
-
-            <!-- Gist Options -->
-            <div id="gistOptions" class="space-y-4 hidden">
-              <div>
-                <label class="block text-sm font-medium mb-2">Gist ID</label>
-                <input 
-                  type="text" 
-                  id="gistId"
-                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
-                  placeholder="bbfce31e0217a3689c8d961a356cb10d">
-              </div>
-            </div>
-
-            <!-- WakaTime Options -->
-            <div id="wakatimeOptions" class="space-y-4 hidden">
-              <div>
-                <label class="block text-sm font-medium mb-2">WakaTime Username</label>
-                <input 
-                  type="text" 
-                  id="wakatimeUsername"
-                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
-                  placeholder="wakatime-username">
-              </div>
-            </div>
-
-            <!-- Trophy Options -->
-            <div id="trophyOptions" class="space-y-4 hidden">
-              <div>
-                <label class="block text-sm font-medium mb-2">Theme</label>
-                <select id="trophyTheme" class="theme-select w-full">
-                  <option value="tokyonight">Tokyo Night</option>
-                  <option value="dark">Dark</option>
-                  <option value="radical">Radical</option>
-                  <option value="dracula">Dracula</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-2">Columns</label>
-                <input 
-                  type="number" 
-                  id="trophyColumns"
-                  min="1"
-                  max="10"
-                  value="7"
-                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
-              </div>
-            </div>
-
-            <!-- Streak Options -->
-            <div id="streakOptions" class="space-y-4 hidden">
-              <div>
-                <label class="block text-sm font-medium mb-2">Theme</label>
-                <select id="streakTheme" class="theme-select w-full">
-                  <option value="tokyonight">Tokyo Night</option>
-                  <option value="dark">Dark</option>
-                  <option value="radical">Radical</option>
-                  <option value="dracula">Dracula</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Activity Graph Options -->
-            <div id="activityGraphOptions" class="space-y-4 hidden">
-              <div>
-                <label class="block text-sm font-medium mb-2">Theme</label>
-                <select id="activityGraphTheme" class="theme-select w-full">
-                  <option value="tokyonight">Tokyo Night</option>
-                  <option value="dark">Dark</option>
-                  <option value="radical">Radical</option>
-                  <option value="dracula">Dracula</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-2">Year (optional)</label>
-                <input 
-                  type="number" 
-                  id="activityYear"
-                  min="2008"
-                  max="2030"
-                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
-                  placeholder="Leave empty for current year">
-              </div>
-            </div>
-
-            <button 
-              onclick="generateCard()"
-              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
-              Generate Card
-            </button>
-          </div>
+          <p class="text-sm text-slate-400 mb-3">Display your GitHub statistics</p>
+          <button onclick="loadExample('stats')" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
+            Use This Card
+          </button>
         </div>
 
-        <!-- Saved Configurations -->
-        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
-          <h3 class="text-xl font-bold mb-4 text-purple-400">Saved Configurations</h3>
-          <div id="savedConfigs" class="space-y-2">
-            <p class="text-slate-400 text-sm">No saved configurations yet</p>
+        <!-- Top Languages Card -->
+        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 card-example">
+          <h3 class="text-xl font-bold mb-3 text-green-400">💻 Top Languages</h3>
+          <div class="bg-white rounded p-4 mb-4">
+            <img src="/api/top-langs?username=lonestill&theme=tokyonight&hide_border=true&layout=compact" alt="Top Languages" class="w-full" />
+          </div>
+          <p class="text-sm text-slate-400 mb-3">Show your most used languages</p>
+          <button onclick="loadExample('top-langs')" class="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm">
+            Use This Card
+          </button>
+        </div>
+
+        <!-- Trophy Card -->
+        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 card-example">
+          <h3 class="text-xl font-bold mb-3 text-yellow-400">🏆 Trophy Card</h3>
+          <div class="bg-white rounded p-4 mb-4">
+            <img src="/api/trophy?username=lonestill&theme=tokyonight&hide_border=true&column=7" alt="Trophy Card" class="w-full" />
+          </div>
+          <p class="text-sm text-slate-400 mb-3">Display your GitHub achievements</p>
+          <button onclick="loadExample('trophy')" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded text-sm">
+            Use This Card
+          </button>
+        </div>
+
+        <!-- Streak Card -->
+        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 card-example">
+          <h3 class="text-xl font-bold mb-3 text-red-400">🔥 Streak Card</h3>
+          <div class="bg-white rounded p-4 mb-4">
+            <img src="/api/streak?username=lonestill&theme=tokyonight&hide_border=true" alt="Streak Card" class="w-full" />
+          </div>
+          <p class="text-sm text-slate-400 mb-3">Show your contribution streak</p>
+          <button onclick="loadExample('streak')" class="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm">
+            Use This Card
+          </button>
+        </div>
+
+        <!-- Activity Graph Card -->
+        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 card-example">
+          <h3 class="text-xl font-bold mb-3 text-pink-400">📈 Activity Graph</h3>
+          <div class="bg-white rounded p-4 mb-4">
+            <img src="/api/activity-graph?username=lonestill&theme=tokyonight&hide_border=true" alt="Activity Graph" class="w-full" />
+          </div>
+          <p class="text-sm text-slate-400 mb-3">Visualize your contribution activity</p>
+          <button onclick="loadExample('activity-graph')" class="w-full bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded text-sm">
+            Use This Card
+          </button>
+        </div>
+
+        <!-- Pin Card -->
+        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 card-example">
+          <h3 class="text-xl font-bold mb-3 text-indigo-400">📌 Repository Pin</h3>
+          <div class="bg-white rounded p-4 mb-4">
+            <img src="/api/pin?username=lonestill&repo=github-readme-stats&theme=tokyonight&hide_border=true" alt="Pin Card" class="w-full" />
+          </div>
+          <p class="text-sm text-slate-400 mb-3">Pin your favorite repositories</p>
+          <button onclick="loadExample('pin')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded text-sm">
+            Use This Card
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Examples Section -->
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center text-purple-400">Quick Examples</h2>
+      <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
+        <div class="flex flex-wrap gap-2 mb-4" id="exampleTabs">
+          <button class="tab-button active px-4 py-2 rounded bg-slate-700 hover:bg-slate-600 text-sm" onclick="showExample('stats')">
+            Stats
+          </button>
+          <button class="tab-button px-4 py-2 rounded bg-slate-700 hover:bg-slate-600 text-sm" onclick="showExample('top-langs')">
+            Top Langs
+          </button>
+          <button class="tab-button px-4 py-2 rounded bg-slate-700 hover:bg-slate-600 text-sm" onclick="showExample('trophy')">
+            Trophy
+          </button>
+          <button class="tab-button px-4 py-2 rounded bg-slate-700 hover:bg-slate-600 text-sm" onclick="showExample('streak')">
+            Streak
+          </button>
+          <button class="tab-button px-4 py-2 rounded bg-slate-700 hover:bg-slate-600 text-sm" onclick="showExample('activity-graph')">
+            Activity Graph
+          </button>
+          <button class="tab-button px-4 py-2 rounded bg-slate-700 hover:bg-slate-600 text-sm" onclick="showExample('pin')">
+            Pin
+          </button>
+        </div>
+        <div id="exampleContent" class="space-y-4">
+          <!-- Stats Example -->
+          <div id="example-stats" class="example-content">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold mb-2">Basic Stats Card</h4>
+                <div class="code-block text-xs">
+                  <code>![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill)</code>
+                </div>
+                <div class="bg-white rounded p-2 mt-2">
+                  <img src="/api?username=lonestill" alt="Basic Stats" class="w-full" />
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2">With Icons & Theme</h4>
+                <div class="code-block text-xs">
+                  <code>![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show_icons=true&theme=tokyonight)</code>
+                </div>
+                <div class="bg-white rounded p-2 mt-2">
+                  <img src="/api?username=lonestill&show_icons=true&theme=tokyonight" alt="Stats with Icons" class="w-full" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Langs Example -->
+          <div id="example-top-langs" class="example-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold mb-2">Normal Layout</h4>
+                <div class="code-block text-xs">
+                  <code>![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs?username=lonestill)</code>
+                </div>
+                <div class="bg-white rounded p-2 mt-2">
+                  <img src="/api/top-langs?username=lonestill" alt="Top Langs" class="w-full" />
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2">Compact Layout</h4>
+                <div class="code-block text-xs">
+                  <code>![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs?username=lonestill&layout=compact)</code>
+                </div>
+                <div class="bg-white rounded p-2 mt-2">
+                  <img src="/api/top-langs?username=lonestill&layout=compact" alt="Top Langs Compact" class="w-full" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trophy Example -->
+          <div id="example-trophy" class="example-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold mb-2">Trophy Card</h4>
+                <div class="code-block text-xs">
+                  <code>![Trophies](https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&theme=tokyonight)</code>
+                </div>
+                <div class="bg-white rounded p-2 mt-2">
+                  <img src="/api/trophy?username=lonestill&theme=tokyonight&column=7" alt="Trophy" class="w-full" />
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2">With Custom Columns</h4>
+                <div class="code-block text-xs">
+                  <code>![Trophies](https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&column=5)</code>
+                </div>
+                <div class="bg-white rounded p-2 mt-2">
+                  <img src="/api/trophy?username=lonestill&column=5" alt="Trophy 5 cols" class="w-full" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Streak Example -->
+          <div id="example-streak" class="example-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold mb-2">Streak Card</h4>
+                <div class="code-block text-xs">
+                  <code>![GitHub Streak](https://github-readme-stats-lonestill.vercel.app/api/streak?username=lonestill)</code>
+                </div>
+                <div class="bg-white rounded p-2 mt-2">
+                  <img src="/api/streak?username=lonestill&theme=tokyonight" alt="Streak" class="w-full" />
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2">With Theme</h4>
+                <div class="code-block text-xs">
+                  <code>![GitHub Streak](https://github-readme-stats-lonestill.vercel.app/api/streak?username=lonestill&theme=radical)</code>
+                </div>
+                <div class="bg-white rounded p-2 mt-2">
+                  <img src="/api/streak?username=lonestill&theme=radical" alt="Streak Radical" class="w-full" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Graph Example -->
+          <div id="example-activity-graph" class="example-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold mb-2">Activity Graph (Current Year)</h4>
+                <div class="code-block text-xs">
+                  <code>![Activity Graph](https://github-readme-stats-lonestill.vercel.app/api/activity-graph?username=lonestill)</code>
+                </div>
+                <div class="bg-white rounded p-2 mt-2">
+                  <img src="/api/activity-graph?username=lonestill&theme=tokyonight" alt="Activity Graph" class="w-full" />
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2">Specific Year</h4>
+                <div class="code-block text-xs">
+                  <code>![Activity Graph](https://github-readme-stats-lonestill.vercel.app/api/activity-graph?username=lonestill&year=2024)</code>
+                </div>
+                <div class="bg-white rounded p-2 mt-2">
+                  <img src="/api/activity-graph?username=lonestill&year=2024&theme=tokyonight" alt="Activity 2024" class="w-full" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pin Example -->
+          <div id="example-pin" class="example-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold mb-2">Repository Pin</h4>
+                <div class="code-block text-xs">
+                  <code>![Repo Card](https://github-readme-stats-lonestill.vercel.app/api/pin?username=lonestill&repo=github-readme-stats)</code>
+                </div>
+                <div class="bg-white rounded p-2 mt-2">
+                  <img src="/api/pin?username=lonestill&repo=github-readme-stats" alt="Pin" class="w-full" />
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2">With Owner</h4>
+                <div class="code-block text-xs">
+                  <code>![Repo Card](https://github-readme-stats-lonestill.vercel.app/api/pin?username=lonestill&repo=github-readme-stats&show_owner=true)</code>
+                </div>
+                <div class="bg-white rounded p-2 mt-2">
+                  <img src="/api/pin?username=lonestill&repo=github-readme-stats&show_owner=true" alt="Pin Owner" class="w-full" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Preview Panel -->
-      <div class="space-y-6">
-        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
-          <h2 class="text-2xl font-bold mb-4 text-purple-400">Preview</h2>
-          <div id="preview" class="card-preview min-h-[200px] flex items-center justify-center">
-            <p class="text-slate-500">Configure your card and click "Generate Card" to see preview</p>
+    <!-- Card Constructor -->
+    <div id="constructor" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center text-blue-400">Card Constructor</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Configuration Panel -->
+        <div class="space-y-6">
+          <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
+            <div class="flex justify-between items-center mb-4">
+              <h2 class="text-2xl font-bold text-blue-400">Card Configuration</h2>
+              <div class="flex gap-2 flex-wrap">
+                <button onclick="saveConfig()" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm">
+                  💾 Save
+                </button>
+                <button onclick="loadConfig()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">
+                  📂 Load
+                </button>
+                <button onclick="exportConfig()" class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-sm">
+                  📤 Export
+                </button>
+                <button onclick="importConfig()" class="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded text-sm">
+                  📥 Import
+                </button>
+              </div>
+            </div>
+            
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium mb-2">GitHub Username</label>
+                <input 
+                  type="text" 
+                  id="username" 
+                  value="lonestill"
+                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="Enter your GitHub username">
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium mb-2">Card Type</label>
+                <select id="cardType" class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                  <option value="stats">Stats Card</option>
+                  <option value="top-langs">Top Languages</option>
+                  <option value="pin">Repository Pin</option>
+                  <option value="gist">Gist Card</option>
+                  <option value="wakatime">WakaTime Stats</option>
+                  <option value="trophy">Trophy Card</option>
+                  <option value="streak">Streak Card</option>
+                  <option value="activity-graph">Activity Graph</option>
+                </select>
+              </div>
+
+              <!-- Presets -->
+              <div class="bg-slate-900 rounded p-4 border border-slate-700">
+                <label class="block text-sm font-medium mb-2">Quick Presets</label>
+                <div class="flex flex-wrap gap-2">
+                  <button onclick="applyPreset('minimal')" class="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1 rounded text-xs">
+                    Minimal
+                  </button>
+                  <button onclick="applyPreset('detailed')" class="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1 rounded text-xs">
+                    Detailed
+                  </button>
+                  <button onclick="applyPreset('dark')" class="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1 rounded text-xs">
+                    Dark Theme
+                  </button>
+                  <button onclick="applyPreset('colorful')" class="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1 rounded text-xs">
+                    Colorful
+                  </button>
+                </div>
+              </div>
+
+              <!-- Stats Card Options -->
+              <div id="statsOptions" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium mb-2">Theme</label>
+                  <select id="theme" class="theme-select w-full">
+                    <option value="default">Default</option>
+                    <option value="dark">Dark</option>
+                    <option value="radical">Radical</option>
+                    <option value="merko">Merko</option>
+                    <option value="gruvbox">Gruvbox</option>
+                    <option value="tokyonight" selected>Tokyo Night</option>
+                    <option value="onedark">One Dark</option>
+                    <option value="cobalt">Cobalt</option>
+                    <option value="synthwave">Synthwave</option>
+                    <option value="highcontrast">High Contrast</option>
+                    <option value="dracula">Dracula</option>
+                    <option value="transparent">Transparent</option>
+                    <option value="prussian">Prussian</option>
+                    <option value="monokai">Monokai</option>
+                    <option value="vue">Vue</option>
+                    <option value="vue-dark">Vue Dark</option>
+                    <option value="shades-of-purple">Shades of Purple</option>
+                    <option value="nightowl">Night Owl</option>
+                    <option value="buefy">Buefy</option>
+                    <option value="blue-green">Blue Green</option>
+                    <option value="algolia">Algolia</option>
+                    <option value="great-gatsby">Great Gatsby</option>
+                    <option value="darcula">Darcula</option>
+                    <option value="bear">Bear</option>
+                    <option value="solarized-dark">Solarized Dark</option>
+                    <option value="solarized-light">Solarized Light</option>
+                    <option value="chartreuse-dark">Chartreuse Dark</option>
+                    <option value="nord">Nord</option>
+                    <option value="gotham">Gotham</option>
+                    <option value="material-palenight">Material Palenight</option>
+                    <option value="graywhite">Gray White</option>
+                    <option value="vision-friendly-dark">Vision Friendly Dark</option>
+                    <option value="ayu-mirage">Ayu Mirage</option>
+                    <option value="midnight-purple">Midnight Purple</option>
+                    <option value="calm">Calm</option>
+                    <option value="omni">Omni</option>
+                    <option value="react">React</option>
+                    <option value="jolly">Jolly</option>
+                    <option value="maroongold">Maroon Gold</option>
+                    <option value="yeblu">Yeblu</option>
+                    <option value="blueberry">Blueberry</option>
+                    <option value="slateorange">Slate Orange</option>
+                    <option value="kacho_ga">Kacho Ga</option>
+                    <option value="outrun">Outrun</option>
+                    <option value="ocean_dark">Ocean Dark</option>
+                    <option value="city_lights">City Lights</option>
+                    <option value="github_dark">GitHub Dark</option>
+                    <option value="github_dark_dimmed">GitHub Dark Dimmed</option>
+                    <option value="discord_old_blurple">Discord Old Blurple</option>
+                    <option value="aura_dark">Aura Dark</option>
+                    <option value="panda">Panda</option>
+                    <option value="noctis_minimus">Noctis Minimus</option>
+                    <option value="cobalt2">Cobalt2</option>
+                    <option value="swift">Swift</option>
+                    <option value="aura">Aura</option>
+                    <option value="apprentice">Apprentice</option>
+                    <option value="moltack">Moltack</option>
+                    <option value="codeSTACKr">CodeSTACKr</option>
+                    <option value="rose_pine">Rose Pine</option>
+                    <option value="catppuccin_latte">Catppuccin Latte</option>
+                    <option value="catppuccin_mocha">Catppuccin Mocha</option>
+                    <option value="date_night">Date Night</option>
+                    <option value="one_dark_pro">One Dark Pro</option>
+                    <option value="rose">Rose</option>
+                    <option value="holi">Holi</option>
+                    <option value="neon">Neon</option>
+                    <option value="blue_navy">Blue Navy</option>
+                    <option value="calm_pink">Calm Pink</option>
+                    <option value="ambient_gradient">Ambient Gradient</option>
+                  </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Show Icons</label>
+                    <input type="checkbox" id="showIcons" class="w-5 h-5">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Hide Border</label>
+                    <input type="checkbox" id="hideBorder" class="w-5 h-5" checked>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Hide Rank</label>
+                    <input type="checkbox" id="hideRank" class="w-5 h-5">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Include All Commits</label>
+                    <input type="checkbox" id="includeAllCommits" class="w-5 h-5">
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Hide Stats (comma-separated)</label>
+                  <input 
+                    type="text" 
+                    id="hideStats"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="stars,commits,prs,issues,contribs">
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Custom Title</label>
+                  <input 
+                    type="text" 
+                    id="customTitle"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="Custom card title">
+                </div>
+              </div>
+
+              <!-- Top Langs Options -->
+              <div id="topLangsOptions" class="space-y-4 hidden">
+                <div>
+                  <label class="block text-sm font-medium mb-2">Theme</label>
+                  <select id="topLangsTheme" class="theme-select w-full">
+                    <option value="tokyonight" selected>Tokyo Night</option>
+                    <option value="dark">Dark</option>
+                    <option value="radical">Radical</option>
+                    <option value="dracula">Dracula</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Layout</label>
+                  <select id="layout" class="theme-select w-full">
+                    <option value="normal">Normal</option>
+                    <option value="compact" selected>Compact</option>
+                    <option value="donut">Donut</option>
+                    <option value="donut-vertical">Donut Vertical</option>
+                    <option value="pie">Pie</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Languages Count (1-20)</label>
+                  <input 
+                    type="number" 
+                    id="langsCount"
+                    min="1"
+                    max="20"
+                    value="5"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+              </div>
+
+              <!-- Pin Options -->
+              <div id="pinOptions" class="space-y-4 hidden">
+                <div>
+                  <label class="block text-sm font-medium mb-2">Repository Name</label>
+                  <input 
+                    type="text" 
+                    id="repoName"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="repository-name">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Show Owner</label>
+                  <input type="checkbox" id="showOwner" class="w-5 h-5">
+                </div>
+              </div>
+
+              <!-- Gist Options -->
+              <div id="gistOptions" class="space-y-4 hidden">
+                <div>
+                  <label class="block text-sm font-medium mb-2">Gist ID</label>
+                  <input 
+                    type="text" 
+                    id="gistId"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="bbfce31e0217a3689c8d961a356cb10d">
+                </div>
+              </div>
+
+              <!-- WakaTime Options -->
+              <div id="wakatimeOptions" class="space-y-4 hidden">
+                <div>
+                  <label class="block text-sm font-medium mb-2">WakaTime Username</label>
+                  <input 
+                    type="text" 
+                    id="wakatimeUsername"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="wakatime-username">
+                </div>
+              </div>
+
+              <!-- Trophy Options -->
+              <div id="trophyOptions" class="space-y-4 hidden">
+                <div>
+                  <label class="block text-sm font-medium mb-2">Theme</label>
+                  <select id="trophyTheme" class="theme-select w-full">
+                    <option value="tokyonight" selected>Tokyo Night</option>
+                    <option value="dark">Dark</option>
+                    <option value="radical">Radical</option>
+                    <option value="dracula">Dracula</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Columns</label>
+                  <input 
+                    type="number" 
+                    id="trophyColumns"
+                    min="1"
+                    max="10"
+                    value="7"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+              </div>
+
+              <!-- Streak Options -->
+              <div id="streakOptions" class="space-y-4 hidden">
+                <div>
+                  <label class="block text-sm font-medium mb-2">Theme</label>
+                  <select id="streakTheme" class="theme-select w-full">
+                    <option value="tokyonight" selected>Tokyo Night</option>
+                    <option value="dark">Dark</option>
+                    <option value="radical">Radical</option>
+                    <option value="dracula">Dracula</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Activity Graph Options -->
+              <div id="activityGraphOptions" class="space-y-4 hidden">
+                <div>
+                  <label class="block text-sm font-medium mb-2">Theme</label>
+                  <select id="activityGraphTheme" class="theme-select w-full">
+                    <option value="tokyonight" selected>Tokyo Night</option>
+                    <option value="dark">Dark</option>
+                    <option value="radical">Radical</option>
+                    <option value="dracula">Dracula</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Year (optional)</label>
+                  <input 
+                    type="number" 
+                    id="activityYear"
+                    min="2008"
+                    max="2030"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="Leave empty for current year">
+                </div>
+              </div>
+
+              <button 
+                onclick="generateCard()"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                Generate Card
+              </button>
+            </div>
+          </div>
+
+          <!-- Saved Configurations -->
+          <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
+            <h3 class="text-xl font-bold mb-4 text-purple-400">Saved Configurations</h3>
+            <div id="savedConfigs" class="space-y-2">
+              <p class="text-slate-400 text-sm">No saved configurations yet</p>
+            </div>
           </div>
         </div>
 
-        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
-          <h2 class="text-2xl font-bold mb-4 text-green-400">Markdown Code</h2>
-          <div class="code-block" id="markdownCode">
-            <code>Configure your card to generate markdown code</code>
+        <!-- Preview Panel -->
+        <div class="space-y-6">
+          <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
+            <h2 class="text-2xl font-bold mb-4 text-purple-400">Preview</h2>
+            <div id="preview" class="card-preview min-h-[200px] flex items-center justify-center">
+              <p class="text-slate-500">Configure your card and click "Generate Card" to see preview</p>
+            </div>
           </div>
-          <button 
-            onclick="copyMarkdown()"
-            class="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors">
-            Copy Markdown
-          </button>
-        </div>
 
-        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
-          <h2 class="text-2xl font-bold mb-4 text-yellow-400">Direct URL</h2>
-          <div class="code-block" id="directUrl">
-            <code>Configure your card to generate URL</code>
+          <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
+            <h2 class="text-2xl font-bold mb-4 text-green-400">Markdown Code</h2>
+            <div class="code-block" id="markdownCode">
+              <code>Configure your card to generate markdown code</code>
+            </div>
+            <button 
+              onclick="copyMarkdown()"
+              class="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors">
+              Copy Markdown
+            </button>
           </div>
-          <button 
-            onclick="copyUrl()"
-            class="mt-4 w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded transition-colors">
-            Copy URL
-          </button>
-        </div>
 
-        <!-- Full README Template -->
-        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
-          <h2 class="text-2xl font-bold mb-4 text-pink-400">Full README Template</h2>
-          <div class="code-block" id="fullReadme" style="max-height: 300px; overflow-y: auto;">
-            <code>Generate cards to see full README template</code>
+          <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
+            <h2 class="text-2xl font-bold mb-4 text-yellow-400">Direct URL</h2>
+            <div class="code-block" id="directUrl">
+              <code>Configure your card to generate URL</code>
+            </div>
+            <button 
+              onclick="copyUrl()"
+              class="mt-4 w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded transition-colors">
+              Copy URL
+            </button>
           </div>
-          <button 
-            onclick="copyFullReadme()"
-            class="mt-4 w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded transition-colors">
-            Copy Full README
-          </button>
+
+          <!-- Full README Template -->
+          <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
+            <h2 class="text-2xl font-bold mb-4 text-pink-400">Full README Template</h2>
+            <div class="code-block" id="fullReadme" style="max-height: 300px; overflow-y: auto;">
+              <code>Generate cards to see full README template</code>
+            </div>
+            <button 
+              onclick="copyFullReadme()"
+              class="mt-4 w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded transition-colors">
+              Copy Full README
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -490,6 +770,11 @@
       } else if (cardType === 'trophy') {
         config.theme = document.getElementById('trophyTheme')?.value || 'tokyonight';
         config.columns = document.getElementById('trophyColumns')?.value || 7;
+      } else if (cardType === 'streak') {
+        config.theme = document.getElementById('streakTheme')?.value || 'tokyonight';
+      } else if (cardType === 'activity-graph') {
+        config.theme = document.getElementById('activityGraphTheme')?.value || 'tokyonight';
+        config.year = document.getElementById('activityYear')?.value || null;
       }
 
       return config;
@@ -524,6 +809,11 @@
       } else if (config.cardType === 'trophy') {
         if (config.theme && document.getElementById('trophyTheme')) document.getElementById('trophyTheme').value = config.theme;
         if (config.columns && document.getElementById('trophyColumns')) document.getElementById('trophyColumns').value = config.columns;
+      } else if (config.cardType === 'streak') {
+        if (config.theme && document.getElementById('streakTheme')) document.getElementById('streakTheme').value = config.theme;
+      } else if (config.cardType === 'activity-graph') {
+        if (config.theme && document.getElementById('activityGraphTheme')) document.getElementById('activityGraphTheme').value = config.theme;
+        if (config.year && document.getElementById('activityYear')) document.getElementById('activityYear').value = config.year;
       }
     }
 
@@ -874,6 +1164,30 @@
       }
       
       generateCard();
+    }
+
+    function loadExample(cardType) {
+      document.getElementById('cardType').value = cardType;
+      document.getElementById('cardType').dispatchEvent(new Event('change'));
+      
+      if (cardType === 'pin') {
+        document.getElementById('repoName').value = 'github-readme-stats';
+      }
+      
+      generateCard();
+      // Scroll to constructor
+      document.getElementById('constructor').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showExample(type) {
+      // Hide all examples
+      document.querySelectorAll('.example-content').forEach(el => el.classList.add('hidden'));
+      // Show selected example
+      document.getElementById(`example-${type}`).classList.remove('hidden');
+      
+      // Update tab buttons
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
     }
 
     // Show/hide options based on card type
