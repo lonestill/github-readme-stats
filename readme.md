@@ -1,6 +1,15 @@
 <div align="center">
   <h1 style="font-size: 28px; margin: 10px 0;">GitHub Readme Stats</h1>
   <p>Dynamically generated GitHub stats cards for your README files</p>
+  <p>
+    <a href="https://github-readme-stats-lonestill.vercel.app">🎨 Card Constructor</a>
+    ·
+    <a href="#all-demos">View Demo</a>
+    ·
+    <a href="https://github.com/lonestill/github-readme-stats/issues/new?assignees=&labels=bug&projects=&template=bug_report.yml">Report Bug</a>
+    ·
+    <a href="https://github.com/lonestill/github-readme-stats/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.yml">Request Feature</a>
+  </p>
 </div>
 
 <p align="center">
@@ -18,17 +27,10 @@
   </a>
 </p>
 
-<p align="center">
-  <a href="#all-demos">View Demo</a>
-  ·
-  <a href="https://github.com/lonestill/github-readme-stats/issues/new?assignees=&labels=bug&projects=&template=bug_report.yml">Report Bug</a>
-  ·
-  <a href="https://github.com/lonestill/github-readme-stats/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.yml">Request Feature</a>
-</p>
-
 <details>
 <summary>Table of contents (Click to show)</summary>
 
+- [Card Constructor](#card-constructor)
 - [GitHub Stats Card](#github-stats-card)
     - [Hiding individual stats](#hiding-individual-stats)
     - [Showing additional individual stats](#showing-additional-individual-stats)
@@ -36,6 +38,18 @@
     - [Showing commits count for specified year](#showing-commits-count-for-specified-year)
     - [Themes](#themes)
     - [Customization](#customization)
+- [GitHub Trophy Card](#github-trophy-card)
+    - [Usage](#usage-trophy)
+    - [Options](#options-trophy)
+    - [Demo](#demo-trophy)
+- [GitHub Streak Card](#github-streak-card)
+    - [Usage](#usage-streak)
+    - [Options](#options-streak)
+    - [Demo](#demo-streak)
+- [GitHub Activity Graph Card](#github-activity-graph-card)
+    - [Usage](#usage-activity)
+    - [Options](#options-activity)
+    - [Demo](#demo-activity)
 - [GitHub Extra Pins](#github-extra-pins)
     - [Usage](#usage)
     - [Options](#options)
@@ -61,6 +75,10 @@
 - [WakaTime Stats Card](#wakatime-stats-card)
     - [Options](#options-3)
     - [Demo](#demo-3)
+- [Batch API](#batch-api)
+    - [Usage](#usage-batch)
+    - [Options](#options-batch)
+    - [Demo](#demo-batch)
 - [All Demos](#all-demos)
   - [Quick Tip (Align The Cards)](#quick-tip-align-the-cards)
     - [Stats and top languages cards](#stats-and-top-languages-cards)
@@ -74,6 +92,21 @@
   - [Available environment variables](#available-environment-variables)
 </details>
 
+# Card Constructor
+
+We've built a powerful web-based card constructor that makes it easy to create and customize your GitHub stats cards!
+
+**🎨 [Try the Card Constructor](https://github-readme-stats-lonestill.vercel.app)**
+
+### Features:
+- ✨ **Live Preview** - See your card changes in real-time
+- 💾 **Save Configurations** - Save your favorite card setups locally
+- 📤 **Export/Import** - Share configurations with others
+- 🎨 **All Themes** - Access to 70+ built-in themes
+- ⚡ **Quick Presets** - One-click presets (Minimal, Detailed, Dark, Colorful)
+- 📋 **Full README Template** - Generate complete README templates
+- 🔄 **Auto-generate** - Cards update automatically as you type
+
 # Important Notices
 
 > [!IMPORTANT]
@@ -86,7 +119,7 @@ Copy and paste this into your markdown, and that's it. Simple!
 Change the `?username=` value to your GitHub username.
 
 ```md
-[![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill)](https://github.com/lonestill/github-readme-stats)
+[![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill)](https://github.com/lonestill)
 ```
 
 > [!WARNING]
@@ -102,7 +135,7 @@ You can pass a query parameter `&hide=` to hide any specific stats with comma-se
 > Options: `&hide=stars,commits,prs,issues,contribs`
 
 ```md
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&hide=contribs,prs)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&hide=contribs,prs)
 ```
 
 ### Showing additional individual stats
@@ -112,7 +145,7 @@ You can pass a query parameter `&show=` to show any specific additional stats wi
 > Options: `&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage`
 
 ```md
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage)
 ```
 
 ### Showing icons
@@ -120,7 +153,7 @@ You can pass a query parameter `&show=` to show any specific additional stats wi
 To enable icons, you can pass `&show_icons=true` in the query param, like so:
 
 ```md
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&show_icons=true)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show_icons=true)
 ```
 
 ### Showing commits count for specified year
@@ -128,7 +161,7 @@ To enable icons, you can pass `&show_icons=true` in the query param, like so:
 You can specify a year and fetch only the commits that were made in that year by passing `&commits_year=YYYY` to the parameter.
 
 ```md
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&commits_year=2024)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&commits_year=2024)
 ```
 
 ### Themes
@@ -138,7 +171,7 @@ With inbuilt themes, you can customize the look of the card without doing any [m
 Use `&theme=THEME_NAME` parameter like so:
 
 ```md
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&show_icons=true&theme=radical)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show_icons=true&theme=radical)
 ```
 
 #### All inbuilt themes
@@ -156,7 +189,7 @@ Since GitHub will re-upload the cards and serve them from their CDN, we can not 
 We have included a `transparent` theme that has a transparent background. This theme is optimized to look good on GitHub's dark and light default themes. You can enable this theme using the `&theme=transparent` parameter like so:
 
 ```md
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&show_icons=true&theme=transparent)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show_icons=true&theme=transparent)
 ```
 
 ##### Add transparent alpha channel to a themes bg_color
@@ -164,7 +197,7 @@ We have included a `transparent` theme that has a transparent background. This t
 You can use the `bg_color` parameter to make any of the available themes transparent. This is done by setting the `bg_color` to a color with a transparent alpha channel (i.e. `bg_color=00000000`):
 
 ```md
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&show_icons=true&bg_color=00000000)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show_icons=true&bg_color=00000000)
 ```
 
 ##### Use GitHub's theme context tag
@@ -172,8 +205,8 @@ You can use the `bg_color` parameter to make any of the available themes transpa
 You can use GitHub's theme context tags to switch the theme based on the user GitHub theme automatically. This is done by appending `#gh-dark-mode-only` or `#gh-light-mode-only` to the end of an image URL:
 
 ```md
-[![GitHub stats-Dark](https://github-readme-stats.vercel.app/api?username=lonestill&show_icons=true&theme=dark#gh-dark-mode-only)](https://github.com/lonestill/github-readme-stats#gh-dark-mode-only)
-[![GitHub stats-Light](https://github-readme-stats.vercel.app/api?username=lonestill&show_icons=true&theme=default#gh-light-mode-only)](https://github.com/lonestill/github-readme-stats#gh-light-mode-only)
+[![GitHub stats-Dark](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show_icons=true&theme=dark#gh-dark-mode-only)](https://github.com/lonestill#gh-dark-mode-only)
+[![GitHub stats-Light](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show_icons=true&theme=default#gh-light-mode-only)](https://github.com/lonestill#gh-light-mode-only)
 ```
 
 ##### Use GitHub's new media feature
@@ -183,14 +216,14 @@ You can use GitHub's new media feature in HTML to specify whether to display ima
 ```html
 <picture>
   <source
-    srcset="https://github-readme-stats.vercel.app/api?username=lonestill&show_icons=true&theme=dark"
+    srcset="https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show_icons=true&theme=dark"
     media="(prefers-color-scheme: dark)"
   />
   <source
-    srcset="https://github-readme-stats.vercel.app/api?username=lonestill&show_icons=true"
+    srcset="https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show_icons=true"
     media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
   />
-  <img src="https://github-readme-stats.vercel.app/api?username=lonestill&show_icons=true" />
+  <img src="https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show_icons=true" />
 </picture>
 ```
 
@@ -214,7 +247,7 @@ You can customize the appearance of all your cards however you wish with URL par
 | `border_radius` | Corner rounding on the card. | number | `4.5` |
 
 > [!WARNING]
-> Cards use caching to decrease the load on servers. Default cache hours: stats card - 24 hours, top languages card - 144 hours (6 days), pin card - 240 hours (10 days), gist card - 48 hours (2 days), and wakatime card - 24 hours. If you want the data on your cards to be updated more often you can [deploy your own instance](#deploy-on-your-own) and set [environment variable](#available-environment-variables) `CACHE_SECONDS` to a value of your choosing.
+> Cards use caching to decrease the load on servers. Default cache hours: stats card - 24 hours, top languages card - 144 hours (6 days), pin card - 240 hours (10 days), gist card - 48 hours (2 days), wakatime card - 24 hours, streak card - 24 hours, activity graph card - 24 hours, and trophy card - 24 hours. If you want the data on your cards to be updated more often you can [deploy your own instance](#deploy-on-your-own) and set [environment variable](#available-environment-variables) `CACHE_SECONDS` to a value of your choosing.
 
 ##### Gradient in bg_color
 
@@ -277,6 +310,107 @@ Here is a list of all available locales:
 
 ---
 
+# GitHub Trophy Card
+
+Display your GitHub achievements as beautiful trophy badges based on your stats!
+
+### Usage <a name="usage-trophy"></a>
+
+Copy-paste this code into your readme and change the links.
+
+Endpoint: `api/trophy?username=lonestill`
+
+```md
+[![Trophies](https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&theme=tokyonight&hide_border=true&column=7)](https://github.com/lonestill)
+```
+
+### Options <a name="options-trophy"></a>
+
+You can customize the appearance and behavior of the trophy card using the [common options](#common-options) and exclusive options listed in the table below.
+
+| Name | Description | Type | Default value |
+| --- | --- | --- | --- |
+| `hide_title` | Hides the title of your card. | boolean | `false` |
+| `card_width` | Sets the card's width manually. | number | `500px (approx.)` |
+| `column` | Number of trophy columns to display. | integer | `7` |
+| `margin_w` | Horizontal margin between trophies. | integer | `15` |
+| `margin_h` | Vertical margin between trophies. | integer | `15` |
+| `hide` | Hides specific trophy categories. | string (comma-separated values) | `null` |
+| `rank` | Shows trophy rank (bronze, silver, gold). | string | `null` |
+| `include_all_commits` | Count total commits instead of just the current year commits. | boolean | `false` |
+| `exclude_repo` | Excludes specified repositories. | string (comma-separated values) | `null` |
+
+### Demo <a name="demo-trophy"></a>
+
+![Trophies](https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&theme=tokyonight&hide_border=true&column=7&margin_w=15&margin_h=15)
+
+---
+
+# GitHub Streak Card
+
+Display your GitHub contribution streak statistics!
+
+### Usage <a name="usage-streak"></a>
+
+Copy-paste this code into your readme and change the links.
+
+Endpoint: `api/streak?username=lonestill`
+
+```md
+[![GitHub Streak](https://github-readme-stats-lonestill.vercel.app/api/streak?username=lonestill&theme=tokyonight&hide_border=true)](https://github.com/lonestill)
+```
+
+### Options <a name="options-streak"></a>
+
+You can customize the appearance and behavior of the streak card using the [common options](#common-options) and exclusive options listed in the table below.
+
+| Name | Description | Type | Default value |
+| --- | --- | --- | --- |
+| `hide_title` | Hides the title of your card. | boolean | `false` |
+| `card_width` | Sets the card's width manually. | number | `400px (approx.)` |
+| `custom_title` | Sets a custom title for the card. | string | `GitHub Streak` |
+
+### Demo <a name="demo-streak"></a>
+
+![GitHub Streak](https://github-readme-stats-lonestill.vercel.app/api/streak?username=lonestill&theme=tokyonight&hide_border=true)
+
+---
+
+# GitHub Activity Graph Card
+
+Display your GitHub contribution activity as a beautiful graph!
+
+### Usage <a name="usage-activity"></a>
+
+Copy-paste this code into your readme and change the links.
+
+Endpoint: `api/activity-graph?username=lonestill`
+
+```md
+[![Activity Graph](https://github-readme-stats-lonestill.vercel.app/api/activity-graph?username=lonestill&theme=tokyonight&hide_border=true)](https://github.com/lonestill)
+```
+
+### Options <a name="options-activity"></a>
+
+You can customize the appearance and behavior of the activity graph card using the [common options](#common-options) and exclusive options listed in the table below.
+
+| Name | Description | Type | Default value |
+| --- | --- | --- | --- |
+| `hide_title` | Hides the title of your card. | boolean | `false` |
+| `card_width` | Sets the card's width manually. | number | `400px (approx.)` |
+| `custom_title` | Sets a custom title for the card. | string | `GitHub Activity` |
+| `year` | Shows activity for a specific year (YYYY). | integer | `null` (current year) |
+
+### Demo <a name="demo-activity"></a>
+
+![Activity Graph](https://github-readme-stats-lonestill.vercel.app/api/activity-graph?username=lonestill&theme=tokyonight&hide_border=true)
+
+* Activity for specific year
+
+![Activity Graph 2024](https://github-readme-stats-lonestill.vercel.app/api/activity-graph?username=lonestill&theme=tokyonight&hide_border=true&year=2024)
+
+---
+
 # GitHub Extra Pins
 
 GitHub extra pins allow you to pin more than 6 repositories in your profile using a GitHub readme profile.
@@ -288,7 +422,7 @@ Copy-paste this code into your readme and change the links.
 Endpoint: `api/pin?username=lonestill&repo=github-readme-stats`
 
 ```md
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats)](https://github.com/lonestill/github-readme-stats)
+[![Readme Card](https://github-readme-stats-lonestill.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats)](https://github.com/lonestill/github-readme-stats)
 ```
 
 ### Options
@@ -302,11 +436,11 @@ You can customize the appearance and behavior of the pinned repository card usin
 
 ### Demo
 
-![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats)
+![Readme Card](https://github-readme-stats-lonestill.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats)
 
 Use `show_owner` query option to include the repo's owner username
 
-![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats&show_owner=true)
+![Readme Card](https://github-readme-stats-lonestill.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats&show_owner=true)
 
 # GitHub Gist Pins
 
@@ -319,7 +453,7 @@ Copy-paste this code into your readme and change the links.
 Endpoint: `api/gist?id=bbfce31e0217a3689c8d961a356cb10d`
 
 ```md
-[![Gist Card](https://github-readme-stats.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d)](https://gist.github.com/Yizack/bbfce31e0217a3689c8d961a356cb10d/)
+[![Gist Card](https://github-readme-stats-lonestill.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d)](https://gist.github.com/Yizack/bbfce31e0217a3689c8d961a356cb10d/)
 ```
 
 ### Options
@@ -332,11 +466,11 @@ You can customize the appearance and behavior of the gist card using the [common
 
 ### Demo
 
-![Gist Card](https://github-readme-stats.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d)
+![Gist Card](https://github-readme-stats-lonestill.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d)
 
 Use `show_owner` query option to include the gist's owner username
 
-![Gist Card](https://github-readme-stats.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d&show_owner=true)
+![Gist Card](https://github-readme-stats-lonestill.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d&show_owner=true)
 
 # Top Languages Card
 
@@ -361,7 +495,7 @@ Copy-paste this code into your readme and change the links.
 Endpoint: `api/top-langs?username=lonestill`
 
 ```md
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill)](https://github.com/lonestill/github-readme-stats)
+[![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill)](https://github.com/lonestill)
 ```
 
 ### Options
@@ -401,7 +535,7 @@ By default, only the byte count is used for determining the languages percentage
 * `&size_weight=0&count_weight=1` - Orders by repo count
 
 ```md
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&size_weight=0.5&count_weight=0.5)
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&size_weight=0.5&count_weight=0.5)
 ```
 
 ### Exclude individual repositories
@@ -409,7 +543,7 @@ By default, only the byte count is used for determining the languages percentage
 You can use the `&exclude_repo=repo1,repo2` parameter to exclude individual repositories.
 
 ```md
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&exclude_repo=repo1,repo2)
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&exclude_repo=repo1,repo2)
 ```
 
 ### Hide individual languages
@@ -417,7 +551,7 @@ You can use the `&exclude_repo=repo1,repo2` parameter to exclude individual repo
 You can use `&hide=language1,language2` parameter to hide individual languages.
 
 ```md
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&hide=javascript,html)
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&hide=javascript,html)
 ```
 
 ### Show more languages
@@ -425,7 +559,7 @@ You can use `&hide=language1,language2` parameter to hide individual languages.
 You can use the `&langs_count=` option to increase or decrease the number of languages shown on the card. Valid values are integers between 1 and 20 (inclusive). By default it was set to `5` for `normal` & `donut` and `6` for other layouts.
 
 ```md
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&langs_count=8)
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&langs_count=8)
 ```
 
 ### Compact Language Card Layout
@@ -433,7 +567,7 @@ You can use the `&langs_count=` option to increase or decrease the number of lan
 You can use the `&layout=compact` option to change the card design.
 
 ```md
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&layout=compact)
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&layout=compact)
 ```
 
 ### Donut Chart Language Card Layout
@@ -441,7 +575,7 @@ You can use the `&layout=compact` option to change the card design.
 You can use the `&layout=donut` option to change the card design.
 
 ```md
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&layout=donut)](https://github.com/lonestill/github-readme-stats)
+[![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&layout=donut)](https://github.com/lonestill)
 ```
 
 ### Donut Vertical Chart Language Card Layout
@@ -449,7 +583,7 @@ You can use the `&layout=donut` option to change the card design.
 You can use the `&layout=donut-vertical` option to change the card design.
 
 ```md
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&layout=donut-vertical)](https://github.com/lonestill/github-readme-stats)
+[![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&layout=donut-vertical)](https://github.com/lonestill)
 ```
 
 ### Pie Chart Language Card Layout
@@ -457,7 +591,7 @@ You can use the `&layout=donut-vertical` option to change the card design.
 You can use the `&layout=pie` option to change the card design.
 
 ```md
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&layout=pie)](https://github.com/lonestill/github-readme-stats)
+[![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&layout=pie)](https://github.com/lonestill)
 ```
 
 ### Hide Progress Bars
@@ -465,7 +599,7 @@ You can use the `&layout=pie` option to change the card design.
 You can use the `&hide_progress=true` option to hide the percentages and the progress bars (layout will be automatically set to `compact`).
 
 ```md
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&hide_progress=true)
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&hide_progress=true)
 ```
 
 ### Change format of language's stats
@@ -473,36 +607,36 @@ You can use the `&hide_progress=true` option to hide the percentages and the pro
 You can use the `&stats_format=bytes` option to display the stats in bytes instead of percentage.
 
 ```md
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&stats_format=bytes)
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&stats_format=bytes)
 ```
 
 ### Demo
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill)
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill)
 
 * Compact layout
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&layout=compact)
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&layout=compact)
 
 * Donut Chart layout
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&layout=donut)](https://github.com/lonestill/github-readme-stats)
+[![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&layout=donut)](https://github.com/lonestill)
 
 * Donut Vertical Chart layout
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&layout=donut-vertical)](https://github.com/lonestill/github-readme-stats)
+[![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&layout=donut-vertical)](https://github.com/lonestill)
 
 * Pie Chart layout
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&layout=pie)](https://github.com/lonestill/github-readme-stats)
+[![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&layout=pie)](https://github.com/lonestill)
 
 * Hidden progress bars
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&hide_progress=true)
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&hide_progress=true)
 
 * Display bytes instead of percentage
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill&stats_format=bytes)
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&stats_format=bytes)
 
 # WakaTime Stats Card
 
@@ -515,7 +649,7 @@ You can use the `&stats_format=bytes` option to display the stats in bytes inste
 Change the `?username=` value to your [WakaTime](https://wakatime.com) username.
 
 ```md
-[![WakaTime stats](https://github-readme-stats.vercel.app/api/wakatime?username=YOUR_USERNAME)](https://github.com/lonestill/github-readme-stats)
+[![WakaTime stats](https://github-readme-stats-lonestill.vercel.app/api/wakatime?username=YOUR_USERNAME)](https://github.com/lonestill/github-readme-stats)
 ```
 
 ### Options
@@ -541,11 +675,67 @@ You can customize the appearance and behavior of the WakaTime stats card using t
 
 ### Demo
 
-![WakaTime stats](https://github-readme-stats.vercel.app/api/wakatime?username=ffflabs)
+![WakaTime stats](https://github-readme-stats-lonestill.vercel.app/api/wakatime?username=ffflabs)
 
 * Compact layout
 
-![WakaTime stats](https://github-readme-stats.vercel.app/api/wakatime?username=ffflabs&layout=compact)
+![WakaTime stats](https://github-readme-stats-lonestill.vercel.app/api/wakatime?username=ffflabs&layout=compact)
+
+---
+
+# Batch API
+
+Generate multiple cards at once with a single API call! Perfect for generating complete README templates.
+
+### Usage <a name="usage-batch"></a>
+
+Endpoint: `api/batch?username=lonestill&cards=stats,top-langs,trophy,streak`
+
+```md
+GET https://github-readme-stats-lonestill.vercel.app/api/batch?username=lonestill&cards=stats,top-langs,trophy,streak&theme=tokyonight&hide_border=true
+```
+
+### Options <a name="options-batch"></a>
+
+| Name | Description | Type | Default value |
+| --- | --- | --- | --- |
+| `username` | GitHub username (required). | string | `null` |
+| `cards` | Comma-separated list of cards to generate. Available: `stats`, `top-langs`, `trophy`, `streak`. | string | `stats,top-langs,trophy` |
+| `theme` | Theme name for all cards. | string | `tokyonight` |
+| `hide_border` | Hides borders on all cards. | boolean | `true` |
+| `cache_seconds` | Sets the cache header manually. | integer | `21600` |
+
+### Response Format
+
+The API returns a JSON object with URLs and markdown for each requested card:
+
+```json
+{
+  "stats": {
+    "url": "https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&theme=tokyonight&hide_border=true",
+    "markdown": "[![GitHub Stats](...)](https://github.com/lonestill)"
+  },
+  "top-langs": {
+    "url": "...",
+    "markdown": "..."
+  },
+  "trophy": {
+    "url": "...",
+    "markdown": "..."
+  },
+  "streak": {
+    "url": "...",
+    "markdown": "..."
+  },
+  "fullReadme": "# Complete README template with all cards..."
+}
+```
+
+### Demo <a name="demo-batch"></a>
+
+```bash
+curl "https://github-readme-stats-lonestill.vercel.app/api/batch?username=lonestill&cards=stats,top-langs,trophy,streak&theme=tokyonight"
+```
 
 ---
 
@@ -553,73 +743,85 @@ You can customize the appearance and behavior of the WakaTime stats card using t
 
 * Default
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill)
 
 * Hiding specific stats
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&hide=contribs,issues)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&hide=contribs,issues)
 
 * Showing additional stats
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&show_icons=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show_icons=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage)
 
 * Showing icons
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&hide=issues&show_icons=true)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&hide=issues&show_icons=true)
 
 * Shows GitHub logo instead rank level
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&rank_icon=github)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&rank_icon=github)
 
 * Shows user rank percentile instead of rank level
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&rank_icon=percentile)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&rank_icon=percentile)
 
 * Customize Border Color
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&border_color=2e4058)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&border_color=2e4058)
 
 * Include All Commits
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&include_all_commits=true)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&include_all_commits=true)
 
 * Themes
 
 Choose from any of the [default themes](#themes)
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&show_icons=true&theme=radical)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&show_icons=true&theme=radical)
 
 * Gradient
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=lonestill&bg_color=30,e96443,904e95&title_color=fff&text_color=fff)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&bg_color=30,e96443,904e95&title_color=fff&text_color=fff)
 
 * Customizing stats card
 
-![GitHub stats](https://github-readme-stats.vercel.app/api/?username=lonestill&show_icons=true&title_color=fff&icon_color=79ff97&text_color=9f9f9f&bg_color=151515)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api/?username=lonestill&show_icons=true&title_color=fff&icon_color=79ff97&text_color=9f9f9f&bg_color=151515)
 
 * Setting card locale
 
-![GitHub stats](https://github-readme-stats.vercel.app/api/?username=lonestill&locale=es)
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api/?username=lonestill&locale=es)
+
+* Trophy card
+
+![Trophies](https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&theme=tokyonight&hide_border=true&column=7)
+
+* Streak card
+
+![GitHub Streak](https://github-readme-stats-lonestill.vercel.app/api/streak?username=lonestill&theme=tokyonight&hide_border=true)
+
+* Activity Graph card
+
+![Activity Graph](https://github-readme-stats-lonestill.vercel.app/api/activity-graph?username=lonestill&theme=tokyonight&hide_border=true)
 
 * Customizing repo card
 
-![Customized Card](https://github-readme-stats.vercel.app/api/pin?username=lonestill&repo=github-readme-stats&title_color=fff&icon_color=f9f9f9&text_color=9f9f9f&bg_color=151515)
+![Customized Card](https://github-readme-stats-lonestill.vercel.app/api/pin?username=lonestill&repo=github-readme-stats&title_color=fff&icon_color=f9f9f9&text_color=9f9f9f&bg_color=151515)
 
 * Gist card
 
-![Gist Card](https://github-readme-stats.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d)
+![Gist Card](https://github-readme-stats-lonestill.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d)
 
 * Customizing gist card
 
-![Gist Card](https://github-readme-stats.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d&theme=calm)
+![Gist Card](https://github-readme-stats-lonestill.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d&theme=calm)
 
 * Top languages
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lonestill)
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill)
 
 * WakaTime card
 
-![WakaTime stats](https://github-readme-stats.vercel.app/api/wakatime?username=ffflabs)
+![WakaTime stats](https://github-readme-stats-lonestill.vercel.app/api/wakatime?username=ffflabs)
 
 ---
 
@@ -630,11 +832,11 @@ By default, GitHub does not lay out the cards side by side. To do that, you can 
 ### Stats and top languages cards
 
 ```html
-<a href="https://github.com/lonestill/github-readme-stats">
-  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api?username=lonestill" />
+<a href="https://github.com/lonestill">
+  <img height=200 align="center" src="https://github-readme-stats-lonestill.vercel.app/api?username=lonestill" />
 </a>
-<a href="https://github.com/lonestill/github-readme-stats">
-  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=lonestill&layout=compact&langs_count=8&card_width=320" />
+<a href="https://github.com/lonestill">
+  <img height=200 align="center" src="https://github-readme-stats-lonestill.vercel.app/api/top-langs?username=lonestill&layout=compact&langs_count=8&card_width=320" />
 </a>
 ```
 
@@ -642,10 +844,10 @@ By default, GitHub does not lay out the cards side by side. To do that, you can 
 
 ```html
 <a href="https://github.com/lonestill/github-readme-stats">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats" />
+  <img align="center" src="https://github-readme-stats-lonestill.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats" />
 </a>
-<a href="https://github.com/lonestill/github-readme-stats">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=lonestill&repo=another-repo" />
+<a href="https://github.com/lonestill/another-repo">
+  <img align="center" src="https://github-readme-stats-lonestill.vercel.app/api/pin/?username=lonestill&repo=another-repo" />
 </a>
 ```
 
