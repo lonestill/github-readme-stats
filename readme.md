@@ -99,13 +99,68 @@ We've built a powerful web-based card constructor that makes it easy to create a
 **🎨 [Try the Card Constructor](https://github-readme-stats-lonestill.vercel.app)**
 
 ### Features:
-- ✨ **Live Preview** - See your card changes in real-time
-- 💾 **Save Configurations** - Save your favorite card setups locally
-- 📤 **Export/Import** - Share configurations with others
-- 🎨 **All Themes** - Access to 70+ built-in themes
-- ⚡ **Quick Presets** - One-click presets (Minimal, Detailed, Dark, Colorful)
-- 📋 **Full README Template** - Generate complete README templates
-- 🔄 **Auto-generate** - Cards update automatically as you type
+
+#### 🎨 Visual Card Gallery
+- Browse all available card types with live previews
+- Quick examples for each card type
+- One-click "Use This Card" buttons to load configurations
+
+#### ⚡ Quick Examples Section
+- Tabbed interface showing examples for each card type
+- Multiple examples per card (basic and advanced)
+- Copy-ready code snippets for each example
+
+#### 🔧 Comprehensive Configuration
+- **Common Options** (applies to all cards):
+  - Hide Border / Hide Title
+  - Card Width (custom sizing)
+  - Border Radius
+  - Locale (50+ languages)
+  - Custom Colors (Title, Text, Icon, Border, Background)
+  - Gradient Backgrounds support
+
+- **Card-Specific Options**:
+  - **Stats Card**: All 20+ options including show/hide stats, rank icons, number formats, etc.
+  - **Top Languages**: Layouts, weights, stats format, hide progress, etc.
+  - **Trophy Card**: Columns, margins, hide categories, etc.
+  - **Streak Card**: Custom titles, themes
+  - **Activity Graph**: Year selection, custom titles
+  - **Pin Card**: Description lines, show owner, themes
+  - **Gist Card**: Show owner, themes
+  - **WakaTime**: Layout, API domain, display format, etc.
+
+#### 💾 Configuration Management
+- **Save Configurations** - Save your favorite card setups locally in browser
+- **Load Configurations** - Quickly switch between saved setups
+- **Export/Import** - Export configurations as JSON files to share with others
+- **Configuration History** - View all saved configurations with timestamps
+
+#### 🎨 Theme Support
+- Access to **70+ built-in themes**
+- Full theme selector for all card types
+- Preview themes in real-time
+
+#### ⚡ Quick Presets
+- **Minimal** - Clean, simple design
+- **Detailed** - Full stats with icons and all commits
+- **Dark Theme** - Dark mode optimized
+- **Colorful** - Vibrant, eye-catching design
+
+#### 📋 Code Generation
+- **Live Preview** - See your card changes in real-time
+- **Markdown Code** - Get ready-to-use markdown code
+- **Direct URL** - Copy the direct image URL
+- **Full README Template** - Generate complete README templates with all cards
+
+#### 🔄 Auto-Generation
+- Cards update automatically as you type
+- Debounced updates for smooth performance
+- Instant preview of all changes
+
+#### 📸 Card Gallery
+- Visual preview of all card types
+- Quick access to examples
+- Easy navigation between card types
 
 # Important Notices
 
@@ -332,17 +387,37 @@ You can customize the appearance and behavior of the trophy card using the [comm
 | --- | --- | --- | --- |
 | `hide_title` | Hides the title of your card. | boolean | `false` |
 | `card_width` | Sets the card's width manually. | number | `500px (approx.)` |
+| `custom_title` | Sets a custom title for the card. | string | `GitHub Trophies` |
 | `column` | Number of trophy columns to display. | integer | `7` |
 | `margin_w` | Horizontal margin between trophies. | integer | `15` |
 | `margin_h` | Vertical margin between trophies. | integer | `15` |
-| `hide` | Hides specific trophy categories. | string (comma-separated values) | `null` |
-| `rank` | Shows trophy rank (bronze, silver, gold). | string | `null` |
+| `hide` | Hides specific trophy categories (e.g. `stars,commits,prs,issues,followers,repos`). | string (comma-separated values) | `null` |
 | `include_all_commits` | Count total commits instead of just the current year commits. | boolean | `false` |
 | `exclude_repo` | Excludes specified repositories. | string (comma-separated values) | `null` |
+
+#### Trophy Categories
+
+The trophy card displays achievements based on your GitHub statistics:
+- **Stars** - Total stars received
+- **Commits** - Total commits made
+- **Pull Requests** - Total PRs created
+- **Issues** - Total issues created
+- **Followers** - Total followers
+- **Repositories** - Total repositories
+
+Each category has Bronze, Silver, and Gold tiers based on thresholds.
 
 ### Demo <a name="demo-trophy"></a>
 
 ![Trophies](https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&theme=tokyonight&hide_border=true&column=7&margin_w=15&margin_h=15)
+
+* With custom columns (5 columns)
+
+![Trophies](https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&theme=tokyonight&hide_border=true&column=5)
+
+* Hiding specific categories
+
+![Trophies](https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&theme=tokyonight&hide_border=true&hide=followers,repos)
 
 ---
 
@@ -373,6 +448,14 @@ You can customize the appearance and behavior of the streak card using the [comm
 ### Demo <a name="demo-streak"></a>
 
 ![GitHub Streak](https://github-readme-stats-lonestill.vercel.app/api/streak?username=lonestill&theme=tokyonight&hide_border=true)
+
+* With custom title
+
+![GitHub Streak](https://github-readme-stats-lonestill.vercel.app/api/streak?username=lonestill&theme=tokyonight&hide_border=true&custom_title=Contribution%20Streak)
+
+* Different theme
+
+![GitHub Streak](https://github-readme-stats-lonestill.vercel.app/api/streak?username=lonestill&theme=radical&hide_border=true)
 
 ---
 
@@ -409,6 +492,14 @@ You can customize the appearance and behavior of the activity graph card using t
 
 ![Activity Graph 2024](https://github-readme-stats-lonestill.vercel.app/api/activity-graph?username=lonestill&theme=tokyonight&hide_border=true&year=2024)
 
+* With custom title
+
+![Activity Graph](https://github-readme-stats-lonestill.vercel.app/api/activity-graph?username=lonestill&theme=tokyonight&hide_border=true&custom_title=My%20GitHub%20Activity)
+
+* Different theme
+
+![Activity Graph](https://github-readme-stats-lonestill.vercel.app/api/activity-graph?username=lonestill&theme=dark&hide_border=true)
+
 ---
 
 # GitHub Extra Pins
@@ -434,6 +525,9 @@ You can customize the appearance and behavior of the pinned repository card usin
 | `show_owner` | Shows the repo's owner name. | boolean | `false` |
 | `description_lines_count` | Manually set the number of lines for the description. Specified value will be clamped between 1 and 3. If this parameter is not specified, the number of lines will be automatically adjusted according to the actual length of the description. | number | `null` |
 
+> [!NOTE]
+> The pin card uses the `default_repocard` theme by default, but you can use any theme from the [available themes](themes/README.md).
+
 ### Demo
 
 ![Readme Card](https://github-readme-stats-lonestill.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats)
@@ -441,6 +535,14 @@ You can customize the appearance and behavior of the pinned repository card usin
 Use `show_owner` query option to include the repo's owner username
 
 ![Readme Card](https://github-readme-stats-lonestill.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats&show_owner=true)
+
+* With custom theme
+
+![Readme Card](https://github-readme-stats-lonestill.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats&theme=tokyonight&hide_border=true)
+
+* With description lines count
+
+![Readme Card](https://github-readme-stats-lonestill.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats&description_lines_count=2)
 
 # GitHub Gist Pins
 
@@ -471,6 +573,10 @@ You can customize the appearance and behavior of the gist card using the [common
 Use `show_owner` query option to include the gist's owner username
 
 ![Gist Card](https://github-readme-stats-lonestill.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d&show_owner=true)
+
+* With custom theme
+
+![Gist Card](https://github-readme-stats-lonestill.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d&theme=calm&hide_border=true)
 
 # Top Languages Card
 
@@ -681,6 +787,14 @@ You can customize the appearance and behavior of the WakaTime stats card using t
 
 ![WakaTime stats](https://github-readme-stats-lonestill.vercel.app/api/wakatime?username=ffflabs&layout=compact)
 
+* With custom API domain (Hakatime example)
+
+![WakaTime stats](https://github-readme-stats-lonestill.vercel.app/api/wakatime?username=YOUR_USERNAME&api_domain=hakatime.com)
+
+* Display format: Percent
+
+![WakaTime stats](https://github-readme-stats-lonestill.vercel.app/api/wakatime?username=ffflabs&display_format=percent)
+
 ---
 
 # Batch API
@@ -737,9 +851,42 @@ The API returns a JSON object with URLs and markdown for each requested card:
 curl "https://github-readme-stats-lonestill.vercel.app/api/batch?username=lonestill&cards=stats,top-langs,trophy,streak&theme=tokyonight"
 ```
 
+#### Example Response
+
+```json
+{
+  "stats": {
+    "url": "https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&theme=tokyonight&hide_border=true",
+    "markdown": "[![GitHub Stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&theme=tokyonight&hide_border=true)](https://github.com/lonestill)"
+  },
+  "top-langs": {
+    "url": "https://github-readme-stats-lonestill.vercel.app/api/top-langs?username=lonestill&theme=tokyonight&hide_border=true&layout=compact",
+    "markdown": "[![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs?username=lonestill&theme=tokyonight&hide_border=true&layout=compact)](https://github.com/lonestill)"
+  },
+  "trophy": {
+    "url": "https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&theme=tokyonight&hide_border=true&column=7",
+    "markdown": "[![Trophies](https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&theme=tokyonight&hide_border=true&column=7)](https://github.com/lonestill)"
+  },
+  "streak": {
+    "url": "https://github-readme-stats-lonestill.vercel.app/api/streak?username=lonestill&theme=tokyonight&hide_border=true",
+    "markdown": "[![GitHub Streak](https://github-readme-stats-lonestill.vercel.app/api/streak?username=lonestill&theme=tokyonight&hide_border=true)](https://github.com/lonestill)"
+  },
+  "fullReadme": "# Complete README template..."
+}
+```
+
+#### Use Cases
+
+- **Generate complete README templates** - Get all cards at once with ready-to-use markdown
+- **API integration** - Use in your own applications to fetch multiple cards
+- **Bulk card generation** - Generate cards for multiple users efficiently
+- **Template creation** - Create README templates for projects or organizations
+
 ---
 
 # All Demos
+
+## Stats Card Examples
 
 * Default
 
@@ -773,6 +920,14 @@ curl "https://github-readme-stats-lonestill.vercel.app/api/batch?username=lonest
 
 ![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&include_all_commits=true)
 
+* Number format: Long
+
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&number_format=long&show_icons=true)
+
+* Commits for specific year
+
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&commits_year=2024&show_icons=true)
+
 * Themes
 
 Choose from any of the [default themes](#themes)
@@ -791,21 +946,63 @@ Choose from any of the [default themes](#themes)
 
 ![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api/?username=lonestill&locale=es)
 
+* Hide rank
+
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&hide_rank=true&show_icons=true)
+
+* Disable animations
+
+![GitHub stats](https://github-readme-stats-lonestill.vercel.app/api?username=lonestill&disable_animations=true&show_icons=true)
+
+## Trophy Card Examples
+
 * Trophy card
 
 ![Trophies](https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&theme=tokyonight&hide_border=true&column=7)
+
+* With custom columns
+
+![Trophies](https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&theme=tokyonight&hide_border=true&column=5)
+
+* Hiding specific categories
+
+![Trophies](https://github-readme-stats-lonestill.vercel.app/api/trophy?username=lonestill&theme=tokyonight&hide_border=true&hide=followers,repos)
+
+## Streak Card Examples
 
 * Streak card
 
 ![GitHub Streak](https://github-readme-stats-lonestill.vercel.app/api/streak?username=lonestill&theme=tokyonight&hide_border=true)
 
+* With custom title
+
+![GitHub Streak](https://github-readme-stats-lonestill.vercel.app/api/streak?username=lonestill&theme=tokyonight&hide_border=true&custom_title=Contribution%20Streak)
+
+## Activity Graph Examples
+
 * Activity Graph card
 
 ![Activity Graph](https://github-readme-stats-lonestill.vercel.app/api/activity-graph?username=lonestill&theme=tokyonight&hide_border=true)
 
+* Activity for specific year
+
+![Activity Graph 2024](https://github-readme-stats-lonestill.vercel.app/api/activity-graph?username=lonestill&theme=tokyonight&hide_border=true&year=2024)
+
+## Repository Pin Examples
+
 * Customizing repo card
 
 ![Customized Card](https://github-readme-stats-lonestill.vercel.app/api/pin?username=lonestill&repo=github-readme-stats&title_color=fff&icon_color=f9f9f9&text_color=9f9f9f&bg_color=151515)
+
+* With show owner
+
+![Readme Card](https://github-readme-stats-lonestill.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats&show_owner=true)
+
+* With custom theme
+
+![Readme Card](https://github-readme-stats-lonestill.vercel.app/api/pin/?username=lonestill&repo=github-readme-stats&theme=tokyonight&hide_border=true)
+
+## Gist Card Examples
 
 * Gist card
 
@@ -815,13 +1012,45 @@ Choose from any of the [default themes](#themes)
 
 ![Gist Card](https://github-readme-stats-lonestill.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d&theme=calm)
 
+* With show owner
+
+![Gist Card](https://github-readme-stats-lonestill.vercel.app/api/gist?id=bbfce31e0217a3689c8d961a356cb10d&show_owner=true)
+
+## Top Languages Examples
+
 * Top languages
 
 ![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill)
 
+* Compact layout
+
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&layout=compact)
+
+* Donut layout
+
+[![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&layout=donut)](https://github.com/lonestill)
+
+* Stats format: Bytes
+
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&stats_format=bytes)
+
+* With size and count weights
+
+![Top Langs](https://github-readme-stats-lonestill.vercel.app/api/top-langs/?username=lonestill&size_weight=0.5&count_weight=0.5)
+
+## WakaTime Examples
+
 * WakaTime card
 
 ![WakaTime stats](https://github-readme-stats-lonestill.vercel.app/api/wakatime?username=ffflabs)
+
+* Compact layout
+
+![WakaTime stats](https://github-readme-stats-lonestill.vercel.app/api/wakatime?username=ffflabs&layout=compact)
+
+* Display format: Percent
+
+![WakaTime stats](https://github-readme-stats-lonestill.vercel.app/api/wakatime?username=ffflabs&display_format=percent)
 
 ---
 
@@ -934,6 +1163,69 @@ See [the Vercel documentation](https://vercel.com/docs/concepts/projects/environ
 
 > [!WARNING]
 > Please remember to redeploy your instance after making any changes to the environment variables so that the updates take effect. The changes will not be applied to the previous deployments.
+
+---
+
+---
+
+## 🚀 Quick Start
+
+1. **Visit the [Card Constructor](https://github-readme-stats-lonestill.vercel.app)** to visually create your cards
+2. **Choose a card type** from the gallery or examples
+3. **Customize** using the comprehensive options
+4. **Copy the markdown** code to your README
+5. **Save your configuration** for future use
+
+## 📚 Complete Feature List
+
+### Available Card Types
+- ✅ **Stats Card** - Comprehensive GitHub statistics
+- ✅ **Top Languages Card** - Most used programming languages
+- ✅ **Trophy Card** - Achievement badges based on stats
+- ✅ **Streak Card** - Contribution streak statistics
+- ✅ **Activity Graph Card** - Visual contribution calendar
+- ✅ **Repository Pin Card** - Pin favorite repositories
+- ✅ **Gist Card** - Display GitHub Gists
+- ✅ **WakaTime Card** - Coding time statistics
+
+### Available Features
+- 🎨 **70+ Themes** - Beautiful color schemes
+- 🌍 **50+ Locales** - Multi-language support
+- 🎯 **Batch API** - Generate multiple cards at once
+- 💾 **Configuration Management** - Save, load, export, import
+- ⚡ **Quick Presets** - One-click configurations
+- 📋 **Full README Templates** - Complete templates generation
+- 🔄 **Live Preview** - Real-time card updates
+- 🎨 **Custom Colors** - Full color customization
+- 📐 **Custom Sizing** - Adjustable card dimensions
+- 🎭 **Gradient Backgrounds** - Beautiful gradient support
+
+### Advanced Options
+- **Stats Card**: 20+ options including rank icons, number formats, show/hide stats, etc.
+- **Top Languages**: 5 layouts, algorithm weights, stats format, hide progress, etc.
+- **Trophy Card**: Custom columns, margins, hide categories, etc.
+- **All Cards**: Common options (colors, locale, border, sizing, etc.)
+
+## 🔗 Useful Links
+
+- **Card Constructor**: [https://github-readme-stats-lonestill.vercel.app](https://github-readme-stats-lonestill.vercel.app)
+- **GitHub Repository**: [https://github.com/lonestill/github-readme-stats](https://github.com/lonestill/github-readme-stats)
+- **All Themes**: [themes/README.md](themes/README.md)
+- **Report Bug**: [Create Issue](https://github.com/lonestill/github-readme-stats/issues/new?assignees=&labels=bug&projects=&template=bug_report.yml)
+- **Request Feature**: [Create Issue](https://github.com/lonestill/github-readme-stats/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.yml)
+
+## 💡 Tips & Tricks
+
+1. **Use the Card Constructor** - It's the easiest way to create and customize cards
+2. **Save your configurations** - Don't lose your favorite setups
+3. **Try different themes** - Find the perfect look for your profile
+4. **Use Batch API** - Generate all cards at once for complete README templates
+5. **Combine cards** - Use multiple cards together for a comprehensive profile
+6. **Customize colors** - Match your GitHub profile theme
+7. **Use locales** - Display cards in your preferred language
+8. **Hide unnecessary stats** - Focus on what matters to you
+9. **Use gradients** - Create eye-catching backgrounds
+10. **Export configurations** - Share your setups with others
 
 ---
 
