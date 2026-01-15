@@ -404,8 +404,140 @@
                 </div>
               </div>
 
+              <!-- Common Options (for all cards) -->
+              <div id="commonOptions" class="space-y-4 border-t border-slate-700 pt-4 mt-4">
+                <h3 class="text-lg font-semibold text-slate-300 mb-3">Common Options</h3>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Hide Border</label>
+                    <input type="checkbox" id="commonHideBorder" class="w-5 h-5" checked>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Hide Title</label>
+                    <input type="checkbox" id="commonHideTitle" class="w-5 h-5">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Card Width (px)</label>
+                  <input 
+                    type="number" 
+                    id="commonCardWidth"
+                    min="200"
+                    max="2000"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="Auto">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Border Radius</label>
+                  <input 
+                    type="number" 
+                    id="commonBorderRadius"
+                    min="0"
+                    max="20"
+                    step="0.5"
+                    value="4.5"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Locale</label>
+                  <select id="commonLocale" class="theme-select w-full">
+                    <option value="">Default (en)</option>
+                    <option value="ar">Arabic</option>
+                    <option value="az">Azerbaijani</option>
+                    <option value="bg">Bulgarian</option>
+                    <option value="bn">Bengali</option>
+                    <option value="ca">Catalan</option>
+                    <option value="cn">Chinese</option>
+                    <option value="zh-tw">Chinese (Taiwan)</option>
+                    <option value="cs">Czech</option>
+                    <option value="de">German</option>
+                    <option value="el">Greek</option>
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fa">Persian (Farsi)</option>
+                    <option value="fi">Finnish</option>
+                    <option value="fil">Filipino</option>
+                    <option value="fr">French</option>
+                    <option value="he">Hebrew</option>
+                    <option value="hi">Hindi</option>
+                    <option value="hu">Hungarian</option>
+                    <option value="id">Indonesian</option>
+                    <option value="it">Italian</option>
+                    <option value="ja">Japanese</option>
+                    <option value="kr">Korean</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="my">Burmese</option>
+                    <option value="nl">Dutch</option>
+                    <option value="np">Nepali</option>
+                    <option value="no">Norwegian</option>
+                    <option value="pl">Polish</option>
+                    <option value="pt-br">Portuguese (Brazil)</option>
+                    <option value="pt-pt">Portuguese (Portugal)</option>
+                    <option value="ro">Romanian</option>
+                    <option value="ru">Russian</option>
+                    <option value="sa">Sanskrit</option>
+                    <option value="se">Swedish</option>
+                    <option value="sk">Slovak</option>
+                    <option value="sr">Serbian (Cyrillic)</option>
+                    <option value="sr-latn">Serbian (Latin)</option>
+                    <option value="sw">Swahili</option>
+                    <option value="ta">Tamil</option>
+                    <option value="th">Thai</option>
+                    <option value="tr">Turkish</option>
+                    <option value="uk-ua">Ukrainian</option>
+                    <option value="ur">Urdu</option>
+                    <option value="uz">Uzbek</option>
+                    <option value="vi">Vietnamese</option>
+                  </select>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Title Color (hex)</label>
+                    <input 
+                      type="text" 
+                      id="commonTitleColor"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="2f80ed">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Text Color (hex)</label>
+                    <input 
+                      type="text" 
+                      id="commonTextColor"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="434d58">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Icon Color (hex)</label>
+                    <input 
+                      type="text" 
+                      id="commonIconColor"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="4c71f2">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Border Color (hex)</label>
+                    <input 
+                      type="text" 
+                      id="commonBorderColor"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="e4e2e2">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Background Color (hex or gradient)</label>
+                  <input 
+                    type="text" 
+                    id="commonBgColor"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="fffefe or 30,e96443,904e95">
+                  <p class="text-xs text-slate-400 mt-1">For gradient: DEG,COLOR1,COLOR2,COLOR3...</p>
+                </div>
+              </div>
+
               <!-- Stats Card Options -->
               <div id="statsOptions" class="space-y-4">
+                <h3 class="text-lg font-semibold text-blue-400 mb-3">Stats Card Options</h3>
                 <div>
                   <label class="block text-sm font-medium mb-2">Theme</label>
                   <select id="theme" class="theme-select w-full">
@@ -487,16 +619,20 @@
                     <input type="checkbox" id="showIcons" class="w-5 h-5">
                   </div>
                   <div>
-                    <label class="block text-sm font-medium mb-2">Hide Border</label>
-                    <input type="checkbox" id="hideBorder" class="w-5 h-5" checked>
-                  </div>
-                  <div>
                     <label class="block text-sm font-medium mb-2">Hide Rank</label>
                     <input type="checkbox" id="hideRank" class="w-5 h-5">
                   </div>
                   <div>
                     <label class="block text-sm font-medium mb-2">Include All Commits</label>
                     <input type="checkbox" id="includeAllCommits" class="w-5 h-5">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Text Bold</label>
+                    <input type="checkbox" id="textBold" class="w-5 h-5" checked>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Disable Animations</label>
+                    <input type="checkbox" id="disableAnimations" class="w-5 h-5">
                   </div>
                 </div>
 
@@ -510,6 +646,15 @@
                 </div>
 
                 <div>
+                  <label class="block text-sm font-medium mb-2">Show Additional Stats (comma-separated)</label>
+                  <input 
+                    type="text" 
+                    id="showStats"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage">
+                </div>
+
+                <div>
                   <label class="block text-sm font-medium mb-2">Custom Title</label>
                   <input 
                     type="text" 
@@ -517,10 +662,81 @@
                     class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
                     placeholder="Custom card title">
                 </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Exclude Repositories (comma-separated)</label>
+                  <input 
+                    type="text" 
+                    id="excludeRepo"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="repo1,repo2">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Line Height</label>
+                    <input 
+                      type="number" 
+                      id="lineHeight"
+                      min="10"
+                      max="50"
+                      value="25"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Ring Color (hex)</label>
+                    <input 
+                      type="text" 
+                      id="ringColor"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="2f80ed">
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Number Format</label>
+                    <select id="numberFormat" class="theme-select w-full">
+                      <option value="short" selected>Short (6.6k)</option>
+                      <option value="long">Long (6626)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Number Precision (0-2)</label>
+                    <input 
+                      type="number" 
+                      id="numberPrecision"
+                      min="0"
+                      max="2"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="Auto">
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Rank Icon</label>
+                  <select id="rankIcon" class="theme-select w-full">
+                    <option value="default" selected>Default</option>
+                    <option value="github">GitHub</option>
+                    <option value="percentile">Percentile</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Commits Year (YYYY, optional)</label>
+                  <input 
+                    type="number" 
+                    id="commitsYear"
+                    min="2008"
+                    max="2030"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="Leave empty for current year">
+                </div>
               </div>
 
               <!-- Top Langs Options -->
               <div id="topLangsOptions" class="space-y-4 hidden">
+                <h3 class="text-lg font-semibold text-green-400 mb-3">Top Languages Options</h3>
                 <div>
                   <label class="block text-sm font-medium mb-2">Theme</label>
                   <select id="topLangsTheme" class="theme-select w-full">
@@ -528,6 +744,14 @@
                     <option value="dark">Dark</option>
                     <option value="radical">Radical</option>
                     <option value="dracula">Dracula</option>
+                    <option value="default">Default</option>
+                    <option value="merko">Merko</option>
+                    <option value="gruvbox">Gruvbox</option>
+                    <option value="onedark">One Dark</option>
+                    <option value="cobalt">Cobalt</option>
+                    <option value="synthwave">Synthwave</option>
+                    <option value="highcontrast">High Contrast</option>
+                    <option value="transparent">Transparent</option>
                   </select>
                 </div>
                 <div>
@@ -550,10 +774,76 @@
                     value="5"
                     class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
                 </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Hide Languages (comma-separated)</label>
+                  <input 
+                    type="text" 
+                    id="topLangsHide"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="javascript,html,css">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Exclude Repositories (comma-separated)</label>
+                  <input 
+                    type="text" 
+                    id="topLangsExcludeRepo"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="repo1,repo2">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Custom Title</label>
+                  <input 
+                    type="text" 
+                    id="topLangsCustomTitle"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="Most Used Languages">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Size Weight</label>
+                    <input 
+                      type="number" 
+                      id="sizeWeight"
+                      min="0"
+                      max="2"
+                      step="0.1"
+                      value="1"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Count Weight</label>
+                    <input 
+                      type="number" 
+                      id="countWeight"
+                      min="0"
+                      max="2"
+                      step="0.1"
+                      value="0"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Stats Format</label>
+                    <select id="statsFormat" class="theme-select w-full">
+                      <option value="percentages" selected>Percentages</option>
+                      <option value="bytes">Bytes</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Hide Progress</label>
+                    <input type="checkbox" id="hideProgress" class="w-5 h-5">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Disable Animations</label>
+                    <input type="checkbox" id="topLangsDisableAnimations" class="w-5 h-5">
+                  </div>
+                </div>
               </div>
 
               <!-- Pin Options -->
               <div id="pinOptions" class="space-y-4 hidden">
+                <h3 class="text-lg font-semibold text-indigo-400 mb-3">Repository Pin Options</h3>
                 <div>
                   <label class="block text-sm font-medium mb-2">Repository Name</label>
                   <input 
@@ -563,13 +853,37 @@
                     placeholder="repository-name">
                 </div>
                 <div>
-                  <label class="block text-sm font-medium mb-2">Show Owner</label>
-                  <input type="checkbox" id="showOwner" class="w-5 h-5">
+                  <label class="block text-sm font-medium mb-2">Theme</label>
+                  <select id="pinTheme" class="theme-select w-full">
+                    <option value="default_repocard" selected>Default Repo Card</option>
+                    <option value="tokyonight">Tokyo Night</option>
+                    <option value="dark">Dark</option>
+                    <option value="radical">Radical</option>
+                    <option value="dracula">Dracula</option>
+                    <option value="transparent">Transparent</option>
+                  </select>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Show Owner</label>
+                    <input type="checkbox" id="showOwner" class="w-5 h-5">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Description Lines Count (1-3)</label>
+                  <input 
+                    type="number" 
+                    id="descriptionLinesCount"
+                    min="1"
+                    max="3"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="Auto">
                 </div>
               </div>
 
               <!-- Gist Options -->
               <div id="gistOptions" class="space-y-4 hidden">
+                <h3 class="text-lg font-semibold text-cyan-400 mb-3">Gist Card Options</h3>
                 <div>
                   <label class="block text-sm font-medium mb-2">Gist ID</label>
                   <input 
@@ -578,10 +892,27 @@
                     class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
                     placeholder="bbfce31e0217a3689c8d961a356cb10d">
                 </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Theme</label>
+                  <select id="gistTheme" class="theme-select w-full">
+                    <option value="default" selected>Default</option>
+                    <option value="tokyonight">Tokyo Night</option>
+                    <option value="dark">Dark</option>
+                    <option value="radical">Radical</option>
+                    <option value="dracula">Dracula</option>
+                    <option value="calm">Calm</option>
+                    <option value="transparent">Transparent</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Show Owner</label>
+                  <input type="checkbox" id="gistShowOwner" class="w-5 h-5">
+                </div>
               </div>
 
               <!-- WakaTime Options -->
               <div id="wakatimeOptions" class="space-y-4 hidden">
+                <h3 class="text-lg font-semibold text-orange-400 mb-3">WakaTime Card Options</h3>
                 <div>
                   <label class="block text-sm font-medium mb-2">WakaTime Username</label>
                   <input 
@@ -590,10 +921,93 @@
                     class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
                     placeholder="wakatime-username">
                 </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Theme</label>
+                  <select id="wakatimeTheme" class="theme-select w-full">
+                    <option value="default" selected>Default</option>
+                    <option value="tokyonight">Tokyo Night</option>
+                    <option value="dark">Dark</option>
+                    <option value="radical">Radical</option>
+                    <option value="dracula">Dracula</option>
+                    <option value="transparent">Transparent</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Layout</label>
+                  <select id="wakatimeLayout" class="theme-select w-full">
+                    <option value="default" selected>Default</option>
+                    <option value="compact">Compact</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Custom Title</label>
+                  <input 
+                    type="text" 
+                    id="wakatimeCustomTitle"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="WakaTime Stats">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Hide Languages (comma-separated)</label>
+                  <input 
+                    type="text" 
+                    id="wakatimeHide"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="language1,language2">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Languages Count</label>
+                    <input 
+                      type="number" 
+                      id="wakatimeLangsCount"
+                      min="1"
+                      max="20"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="All">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Line Height</label>
+                    <input 
+                      type="number" 
+                      id="wakatimeLineHeight"
+                      min="10"
+                      max="50"
+                      value="25"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">API Domain</label>
+                  <input 
+                    type="text" 
+                    id="wakatimeApiDomain"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="wakatime.com">
+                  <p class="text-xs text-slate-400 mt-1">For custom APIs like Hakatime or Wakapi</p>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Display Format</label>
+                  <select id="wakatimeDisplayFormat" class="theme-select w-full">
+                    <option value="time" selected>Time</option>
+                    <option value="percent">Percent</option>
+                  </select>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Hide Progress</label>
+                    <input type="checkbox" id="wakatimeHideProgress" class="w-5 h-5">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Disable Animations</label>
+                    <input type="checkbox" id="wakatimeDisableAnimations" class="w-5 h-5">
+                  </div>
+                </div>
               </div>
 
               <!-- Trophy Options -->
               <div id="trophyOptions" class="space-y-4 hidden">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-3">Trophy Card Options</h3>
                 <div>
                   <label class="block text-sm font-medium mb-2">Theme</label>
                   <select id="trophyTheme" class="theme-select w-full">
@@ -601,7 +1015,23 @@
                     <option value="dark">Dark</option>
                     <option value="radical">Radical</option>
                     <option value="dracula">Dracula</option>
+                    <option value="default">Default</option>
+                    <option value="merko">Merko</option>
+                    <option value="gruvbox">Gruvbox</option>
+                    <option value="onedark">One Dark</option>
+                    <option value="cobalt">Cobalt</option>
+                    <option value="synthwave">Synthwave</option>
+                    <option value="highcontrast">High Contrast</option>
+                    <option value="transparent">Transparent</option>
                   </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Custom Title</label>
+                  <input 
+                    type="text" 
+                    id="trophyCustomTitle"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="GitHub Trophies">
                 </div>
                 <div>
                   <label class="block text-sm font-medium mb-2">Columns</label>
@@ -613,10 +1043,55 @@
                     value="7"
                     class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
                 </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Margin Width</label>
+                    <input 
+                      type="number" 
+                      id="trophyMarginW"
+                      min="0"
+                      max="50"
+                      value="15"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Margin Height</label>
+                    <input 
+                      type="number" 
+                      id="trophyMarginH"
+                      min="0"
+                      max="50"
+                      value="15"
+                      class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Hide Trophy Categories (comma-separated)</label>
+                  <input 
+                    type="text" 
+                    id="trophyHide"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="stars,commits,prs">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Include All Commits</label>
+                    <input type="checkbox" id="trophyIncludeAllCommits" class="w-5 h-5">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Exclude Repositories (comma-separated)</label>
+                  <input 
+                    type="text" 
+                    id="trophyExcludeRepo"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="repo1,repo2">
+                </div>
               </div>
 
               <!-- Streak Options -->
               <div id="streakOptions" class="space-y-4 hidden">
+                <h3 class="text-lg font-semibold text-red-400 mb-3">Streak Card Options</h3>
                 <div>
                   <label class="block text-sm font-medium mb-2">Theme</label>
                   <select id="streakTheme" class="theme-select w-full">
@@ -624,12 +1099,29 @@
                     <option value="dark">Dark</option>
                     <option value="radical">Radical</option>
                     <option value="dracula">Dracula</option>
+                    <option value="default">Default</option>
+                    <option value="merko">Merko</option>
+                    <option value="gruvbox">Gruvbox</option>
+                    <option value="onedark">One Dark</option>
+                    <option value="cobalt">Cobalt</option>
+                    <option value="synthwave">Synthwave</option>
+                    <option value="highcontrast">High Contrast</option>
+                    <option value="transparent">Transparent</option>
                   </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Custom Title</label>
+                  <input 
+                    type="text" 
+                    id="streakCustomTitle"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="GitHub Streak">
                 </div>
               </div>
 
               <!-- Activity Graph Options -->
               <div id="activityGraphOptions" class="space-y-4 hidden">
+                <h3 class="text-lg font-semibold text-pink-400 mb-3">Activity Graph Options</h3>
                 <div>
                   <label class="block text-sm font-medium mb-2">Theme</label>
                   <select id="activityGraphTheme" class="theme-select w-full">
@@ -637,7 +1129,23 @@
                     <option value="dark">Dark</option>
                     <option value="radical">Radical</option>
                     <option value="dracula">Dracula</option>
+                    <option value="default">Default</option>
+                    <option value="merko">Merko</option>
+                    <option value="gruvbox">Gruvbox</option>
+                    <option value="onedark">One Dark</option>
+                    <option value="cobalt">Cobalt</option>
+                    <option value="synthwave">Synthwave</option>
+                    <option value="highcontrast">High Contrast</option>
+                    <option value="transparent">Transparent</option>
                   </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Custom Title</label>
+                  <input 
+                    type="text" 
+                    id="activityGraphCustomTitle"
+                    class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="GitHub Activity">
                 </div>
                 <div>
                   <label class="block text-sm font-medium mb-2">Year (optional)</label>
@@ -746,34 +1254,84 @@
       const config = {
         username: getUsername(),
         cardType: cardType,
+        // Common options
+        hideBorder: document.getElementById('commonHideBorder')?.checked ?? false,
+        hideTitle: document.getElementById('commonHideTitle')?.checked ?? false,
+        cardWidth: document.getElementById('commonCardWidth')?.value || null,
+        borderRadius: document.getElementById('commonBorderRadius')?.value || null,
+        locale: document.getElementById('commonLocale')?.value || null,
+        titleColor: document.getElementById('commonTitleColor')?.value.trim() || null,
+        textColor: document.getElementById('commonTextColor')?.value.trim() || null,
+        iconColor: document.getElementById('commonIconColor')?.value.trim() || null,
+        borderColor: document.getElementById('commonBorderColor')?.value.trim() || null,
+        bgColor: document.getElementById('commonBgColor')?.value.trim() || null,
       };
 
       if (cardType === 'stats') {
         config.theme = document.getElementById('theme').value;
         config.showIcons = document.getElementById('showIcons').checked;
-        config.hideBorder = document.getElementById('hideBorder').checked;
         config.hideRank = document.getElementById('hideRank').checked;
         config.includeAllCommits = document.getElementById('includeAllCommits').checked;
+        config.textBold = document.getElementById('textBold').checked;
+        config.disableAnimations = document.getElementById('disableAnimations').checked;
         config.hideStats = document.getElementById('hideStats').value.trim();
+        config.showStats = document.getElementById('showStats').value.trim();
         config.customTitle = document.getElementById('customTitle').value.trim();
+        config.excludeRepo = document.getElementById('excludeRepo').value.trim();
+        config.lineHeight = document.getElementById('lineHeight').value || null;
+        config.ringColor = document.getElementById('ringColor').value.trim() || null;
+        config.numberFormat = document.getElementById('numberFormat').value;
+        config.numberPrecision = document.getElementById('numberPrecision').value || null;
+        config.rankIcon = document.getElementById('rankIcon').value;
+        config.commitsYear = document.getElementById('commitsYear').value || null;
       } else if (cardType === 'top-langs') {
         config.theme = document.getElementById('topLangsTheme')?.value || 'tokyonight';
         config.layout = document.getElementById('layout').value;
         config.langsCount = document.getElementById('langsCount').value;
+        config.hide = document.getElementById('topLangsHide')?.value.trim() || null;
+        config.excludeRepo = document.getElementById('topLangsExcludeRepo')?.value.trim() || null;
+        config.customTitle = document.getElementById('topLangsCustomTitle')?.value.trim() || null;
+        config.sizeWeight = document.getElementById('sizeWeight')?.value || null;
+        config.countWeight = document.getElementById('countWeight')?.value || null;
+        config.statsFormat = document.getElementById('statsFormat')?.value || null;
+        config.hideProgress = document.getElementById('hideProgress')?.checked || false;
+        config.disableAnimations = document.getElementById('topLangsDisableAnimations')?.checked || false;
       } else if (cardType === 'pin') {
         config.repoName = document.getElementById('repoName').value.trim();
+        config.theme = document.getElementById('pinTheme')?.value || 'default_repocard';
         config.showOwner = document.getElementById('showOwner').checked;
+        config.descriptionLinesCount = document.getElementById('descriptionLinesCount')?.value || null;
       } else if (cardType === 'gist') {
         config.gistId = document.getElementById('gistId').value.trim();
+        config.theme = document.getElementById('gistTheme')?.value || 'default';
+        config.showOwner = document.getElementById('gistShowOwner').checked;
       } else if (cardType === 'wakatime') {
         config.wakatimeUsername = document.getElementById('wakatimeUsername').value.trim();
+        config.theme = document.getElementById('wakatimeTheme')?.value || 'default';
+        config.layout = document.getElementById('wakatimeLayout')?.value || null;
+        config.customTitle = document.getElementById('wakatimeCustomTitle')?.value.trim() || null;
+        config.hide = document.getElementById('wakatimeHide')?.value.trim() || null;
+        config.langsCount = document.getElementById('wakatimeLangsCount')?.value || null;
+        config.lineHeight = document.getElementById('wakatimeLineHeight')?.value || null;
+        config.apiDomain = document.getElementById('wakatimeApiDomain')?.value.trim() || null;
+        config.displayFormat = document.getElementById('wakatimeDisplayFormat')?.value || null;
+        config.hideProgress = document.getElementById('wakatimeHideProgress')?.checked || false;
+        config.disableAnimations = document.getElementById('wakatimeDisableAnimations')?.checked || false;
       } else if (cardType === 'trophy') {
         config.theme = document.getElementById('trophyTheme')?.value || 'tokyonight';
+        config.customTitle = document.getElementById('trophyCustomTitle')?.value.trim() || null;
         config.columns = document.getElementById('trophyColumns')?.value || 7;
+        config.marginW = document.getElementById('trophyMarginW')?.value || 15;
+        config.marginH = document.getElementById('trophyMarginH')?.value || 15;
+        config.hide = document.getElementById('trophyHide')?.value.trim() || null;
+        config.includeAllCommits = document.getElementById('trophyIncludeAllCommits')?.checked || false;
+        config.excludeRepo = document.getElementById('trophyExcludeRepo')?.value.trim() || null;
       } else if (cardType === 'streak') {
         config.theme = document.getElementById('streakTheme')?.value || 'tokyonight';
+        config.customTitle = document.getElementById('streakCustomTitle')?.value.trim() || null;
       } else if (cardType === 'activity-graph') {
         config.theme = document.getElementById('activityGraphTheme')?.value || 'tokyonight';
+        config.customTitle = document.getElementById('activityGraphCustomTitle')?.value.trim() || null;
         config.year = document.getElementById('activityYear')?.value || null;
       }
 
@@ -784,37 +1342,112 @@
       document.getElementById('username').value = config.username || 'lonestill';
       document.getElementById('cardType').value = config.cardType || 'stats';
       
+      // Set common options
+      if (config.hideBorder !== undefined) document.getElementById('commonHideBorder').checked = config.hideBorder;
+      if (config.hideTitle !== undefined) document.getElementById('commonHideTitle').checked = config.hideTitle;
+      if (config.cardWidth) document.getElementById('commonCardWidth').value = config.cardWidth;
+      if (config.borderRadius) document.getElementById('commonBorderRadius').value = config.borderRadius;
+      if (config.locale) document.getElementById('commonLocale').value = config.locale;
+      if (config.titleColor) document.getElementById('commonTitleColor').value = config.titleColor;
+      if (config.textColor) document.getElementById('commonTextColor').value = config.textColor;
+      if (config.iconColor) document.getElementById('commonIconColor').value = config.iconColor;
+      if (config.borderColor) document.getElementById('commonBorderColor').value = config.borderColor;
+      if (config.bgColor) document.getElementById('commonBgColor').value = config.bgColor;
+      
       // Trigger card type change to show/hide options
       document.getElementById('cardType').dispatchEvent(new Event('change'));
 
       if (config.cardType === 'stats') {
         if (config.theme) document.getElementById('theme').value = config.theme;
         if (config.showIcons !== undefined) document.getElementById('showIcons').checked = config.showIcons;
-        if (config.hideBorder !== undefined) document.getElementById('hideBorder').checked = config.hideBorder;
         if (config.hideRank !== undefined) document.getElementById('hideRank').checked = config.hideRank;
         if (config.includeAllCommits !== undefined) document.getElementById('includeAllCommits').checked = config.includeAllCommits;
+        if (config.textBold !== undefined) document.getElementById('textBold').checked = config.textBold;
+        if (config.disableAnimations !== undefined) document.getElementById('disableAnimations').checked = config.disableAnimations;
         if (config.hideStats) document.getElementById('hideStats').value = config.hideStats;
+        if (config.showStats) document.getElementById('showStats').value = config.showStats;
         if (config.customTitle) document.getElementById('customTitle').value = config.customTitle;
+        if (config.excludeRepo) document.getElementById('excludeRepo').value = config.excludeRepo;
+        if (config.lineHeight) document.getElementById('lineHeight').value = config.lineHeight;
+        if (config.ringColor) document.getElementById('ringColor').value = config.ringColor;
+        if (config.numberFormat) document.getElementById('numberFormat').value = config.numberFormat;
+        if (config.numberPrecision) document.getElementById('numberPrecision').value = config.numberPrecision;
+        if (config.rankIcon) document.getElementById('rankIcon').value = config.rankIcon;
+        if (config.commitsYear) document.getElementById('commitsYear').value = config.commitsYear;
       } else if (config.cardType === 'top-langs') {
         if (config.theme && document.getElementById('topLangsTheme')) document.getElementById('topLangsTheme').value = config.theme;
         if (config.layout) document.getElementById('layout').value = config.layout;
         if (config.langsCount) document.getElementById('langsCount').value = config.langsCount;
+        if (config.hide && document.getElementById('topLangsHide')) document.getElementById('topLangsHide').value = config.hide;
+        if (config.excludeRepo && document.getElementById('topLangsExcludeRepo')) document.getElementById('topLangsExcludeRepo').value = config.excludeRepo;
+        if (config.customTitle && document.getElementById('topLangsCustomTitle')) document.getElementById('topLangsCustomTitle').value = config.customTitle;
+        if (config.sizeWeight && document.getElementById('sizeWeight')) document.getElementById('sizeWeight').value = config.sizeWeight;
+        if (config.countWeight && document.getElementById('countWeight')) document.getElementById('countWeight').value = config.countWeight;
+        if (config.statsFormat && document.getElementById('statsFormat')) document.getElementById('statsFormat').value = config.statsFormat;
+        if (config.hideProgress !== undefined && document.getElementById('hideProgress')) document.getElementById('hideProgress').checked = config.hideProgress;
+        if (config.disableAnimations !== undefined && document.getElementById('topLangsDisableAnimations')) document.getElementById('topLangsDisableAnimations').checked = config.disableAnimations;
       } else if (config.cardType === 'pin') {
         if (config.repoName) document.getElementById('repoName').value = config.repoName;
+        if (config.theme && document.getElementById('pinTheme')) document.getElementById('pinTheme').value = config.theme;
         if (config.showOwner !== undefined) document.getElementById('showOwner').checked = config.showOwner;
+        if (config.descriptionLinesCount && document.getElementById('descriptionLinesCount')) document.getElementById('descriptionLinesCount').value = config.descriptionLinesCount;
       } else if (config.cardType === 'gist') {
         if (config.gistId) document.getElementById('gistId').value = config.gistId;
+        if (config.theme && document.getElementById('gistTheme')) document.getElementById('gistTheme').value = config.theme;
+        if (config.showOwner !== undefined && document.getElementById('gistShowOwner')) document.getElementById('gistShowOwner').checked = config.showOwner;
       } else if (config.cardType === 'wakatime') {
         if (config.wakatimeUsername) document.getElementById('wakatimeUsername').value = config.wakatimeUsername;
+        if (config.theme && document.getElementById('wakatimeTheme')) document.getElementById('wakatimeTheme').value = config.theme;
+        if (config.layout && document.getElementById('wakatimeLayout')) document.getElementById('wakatimeLayout').value = config.layout;
+        if (config.customTitle && document.getElementById('wakatimeCustomTitle')) document.getElementById('wakatimeCustomTitle').value = config.customTitle;
+        if (config.hide && document.getElementById('wakatimeHide')) document.getElementById('wakatimeHide').value = config.hide;
+        if (config.langsCount && document.getElementById('wakatimeLangsCount')) document.getElementById('wakatimeLangsCount').value = config.langsCount;
+        if (config.lineHeight && document.getElementById('wakatimeLineHeight')) document.getElementById('wakatimeLineHeight').value = config.lineHeight;
+        if (config.apiDomain && document.getElementById('wakatimeApiDomain')) document.getElementById('wakatimeApiDomain').value = config.apiDomain;
+        if (config.displayFormat && document.getElementById('wakatimeDisplayFormat')) document.getElementById('wakatimeDisplayFormat').value = config.displayFormat;
+        if (config.hideProgress !== undefined && document.getElementById('wakatimeHideProgress')) document.getElementById('wakatimeHideProgress').checked = config.hideProgress;
+        if (config.disableAnimations !== undefined && document.getElementById('wakatimeDisableAnimations')) document.getElementById('wakatimeDisableAnimations').checked = config.disableAnimations;
       } else if (config.cardType === 'trophy') {
         if (config.theme && document.getElementById('trophyTheme')) document.getElementById('trophyTheme').value = config.theme;
+        if (config.customTitle && document.getElementById('trophyCustomTitle')) document.getElementById('trophyCustomTitle').value = config.customTitle;
         if (config.columns && document.getElementById('trophyColumns')) document.getElementById('trophyColumns').value = config.columns;
+        if (config.marginW && document.getElementById('trophyMarginW')) document.getElementById('trophyMarginW').value = config.marginW;
+        if (config.marginH && document.getElementById('trophyMarginH')) document.getElementById('trophyMarginH').value = config.marginH;
+        if (config.hide && document.getElementById('trophyHide')) document.getElementById('trophyHide').value = config.hide;
+        if (config.includeAllCommits !== undefined && document.getElementById('trophyIncludeAllCommits')) document.getElementById('trophyIncludeAllCommits').checked = config.includeAllCommits;
+        if (config.excludeRepo && document.getElementById('trophyExcludeRepo')) document.getElementById('trophyExcludeRepo').value = config.excludeRepo;
       } else if (config.cardType === 'streak') {
         if (config.theme && document.getElementById('streakTheme')) document.getElementById('streakTheme').value = config.theme;
+        if (config.customTitle && document.getElementById('streakCustomTitle')) document.getElementById('streakCustomTitle').value = config.customTitle;
       } else if (config.cardType === 'activity-graph') {
         if (config.theme && document.getElementById('activityGraphTheme')) document.getElementById('activityGraphTheme').value = config.theme;
+        if (config.customTitle && document.getElementById('activityGraphCustomTitle')) document.getElementById('activityGraphCustomTitle').value = config.customTitle;
         if (config.year && document.getElementById('activityYear')) document.getElementById('activityYear').value = config.year;
       }
+    }
+
+    function addCommonParams(params) {
+      const hideBorder = document.getElementById('commonHideBorder')?.checked;
+      const hideTitle = document.getElementById('commonHideTitle')?.checked;
+      const cardWidth = document.getElementById('commonCardWidth')?.value;
+      const borderRadius = document.getElementById('commonBorderRadius')?.value;
+      const locale = document.getElementById('commonLocale')?.value;
+      const titleColor = document.getElementById('commonTitleColor')?.value.trim();
+      const textColor = document.getElementById('commonTextColor')?.value.trim();
+      const iconColor = document.getElementById('commonIconColor')?.value.trim();
+      const borderColor = document.getElementById('commonBorderColor')?.value.trim();
+      const bgColor = document.getElementById('commonBgColor')?.value.trim();
+
+      if (hideBorder) params.append('hide_border', 'true');
+      if (hideTitle) params.append('hide_title', 'true');
+      if (cardWidth) params.append('card_width', cardWidth);
+      if (borderRadius && parseFloat(borderRadius) !== 4.5) params.append('border_radius', borderRadius);
+      if (locale) params.append('locale', locale);
+      if (titleColor) params.append('title_color', titleColor);
+      if (textColor) params.append('text_color', textColor);
+      if (iconColor) params.append('icon_color', iconColor);
+      if (borderColor) params.append('border_color', borderColor);
+      if (bgColor) params.append('bg_color', bgColor);
     }
 
     function buildUrl() {
@@ -824,19 +1457,47 @@
       
       params.append('username', username);
 
+      // Add common params
+      addCommonParams(params);
+
       if (cardType === 'stats') {
         const theme = document.getElementById('theme').value;
         if (theme && theme !== 'default') params.append('theme', theme);
         if (document.getElementById('showIcons').checked) params.append('show_icons', 'true');
-        if (document.getElementById('hideBorder').checked) params.append('hide_border', 'true');
         if (document.getElementById('hideRank').checked) params.append('hide_rank', 'true');
         if (document.getElementById('includeAllCommits').checked) params.append('include_all_commits', 'true');
+        if (!document.getElementById('textBold').checked) params.append('text_bold', 'false');
+        if (document.getElementById('disableAnimations').checked) params.append('disable_animations', 'true');
         
         const hideStats = document.getElementById('hideStats').value.trim();
         if (hideStats) params.append('hide', hideStats);
         
+        const showStats = document.getElementById('showStats').value.trim();
+        if (showStats) params.append('show', showStats);
+        
         const customTitle = document.getElementById('customTitle').value.trim();
         if (customTitle) params.append('custom_title', customTitle);
+
+        const excludeRepo = document.getElementById('excludeRepo').value.trim();
+        if (excludeRepo) params.append('exclude_repo', excludeRepo);
+
+        const lineHeight = document.getElementById('lineHeight').value;
+        if (lineHeight && lineHeight !== '25') params.append('line_height', lineHeight);
+
+        const ringColor = document.getElementById('ringColor').value.trim();
+        if (ringColor) params.append('ring_color', ringColor);
+
+        const numberFormat = document.getElementById('numberFormat').value;
+        if (numberFormat && numberFormat !== 'short') params.append('number_format', numberFormat);
+
+        const numberPrecision = document.getElementById('numberPrecision').value;
+        if (numberPrecision) params.append('number_precision', numberPrecision);
+
+        const rankIcon = document.getElementById('rankIcon').value;
+        if (rankIcon && rankIcon !== 'default') params.append('rank_icon', rankIcon);
+
+        const commitsYear = document.getElementById('commitsYear').value;
+        if (commitsYear) params.append('commits_year', commitsYear);
 
         return `${baseUrl}/api?${params.toString()}`;
       } else if (cardType === 'top-langs') {
@@ -846,6 +1507,28 @@
         if (theme && theme !== 'default') params.append('theme', theme);
         if (layout && layout !== 'normal') params.append('layout', layout);
         if (langsCount) params.append('langs_count', langsCount);
+
+        const hide = document.getElementById('topLangsHide')?.value.trim();
+        if (hide) params.append('hide', hide);
+
+        const excludeRepo = document.getElementById('topLangsExcludeRepo')?.value.trim();
+        if (excludeRepo) params.append('exclude_repo', excludeRepo);
+
+        const customTitle = document.getElementById('topLangsCustomTitle')?.value.trim();
+        if (customTitle) params.append('custom_title', customTitle);
+
+        const sizeWeight = document.getElementById('sizeWeight')?.value;
+        if (sizeWeight && sizeWeight !== '1') params.append('size_weight', sizeWeight);
+
+        const countWeight = document.getElementById('countWeight')?.value;
+        if (countWeight && countWeight !== '0') params.append('count_weight', countWeight);
+
+        const statsFormat = document.getElementById('statsFormat')?.value;
+        if (statsFormat && statsFormat !== 'percentages') params.append('stats_format', statsFormat);
+
+        if (document.getElementById('hideProgress')?.checked) params.append('hide_progress', 'true');
+        if (document.getElementById('topLangsDisableAnimations')?.checked) params.append('disable_animations', 'true');
+
         return `${baseUrl}/api/top-langs?${params.toString()}`;
       } else if (cardType === 'pin') {
         const repoName = document.getElementById('repoName').value.trim();
@@ -854,7 +1537,15 @@
           return null;
         }
         params.append('repo', repoName);
+        
+        const theme = document.getElementById('pinTheme')?.value;
+        if (theme && theme !== 'default_repocard') params.append('theme', theme);
+        
         if (document.getElementById('showOwner').checked) params.append('show_owner', 'true');
+
+        const descriptionLinesCount = document.getElementById('descriptionLinesCount')?.value;
+        if (descriptionLinesCount) params.append('description_lines_count', descriptionLinesCount);
+
         return `${baseUrl}/api/pin?${params.toString()}`;
       } else if (cardType === 'gist') {
         const gistId = document.getElementById('gistId').value.trim();
@@ -862,31 +1553,93 @@
           alert('Please enter Gist ID');
           return null;
         }
-        return `${baseUrl}/api/gist?id=${gistId}`;
+        params.append('id', gistId);
+        
+        const theme = document.getElementById('gistTheme')?.value;
+        if (theme && theme !== 'default') params.append('theme', theme);
+        
+        if (document.getElementById('gistShowOwner')?.checked) params.append('show_owner', 'true');
+
+        return `${baseUrl}/api/gist?${params.toString()}`;
       } else if (cardType === 'wakatime') {
         const wakatimeUsername = document.getElementById('wakatimeUsername').value.trim();
         if (!wakatimeUsername) {
           alert('Please enter WakaTime username');
           return null;
         }
-        return `${baseUrl}/api/wakatime?username=${wakatimeUsername}`;
+        params.append('username', wakatimeUsername);
+        
+        const theme = document.getElementById('wakatimeTheme')?.value;
+        if (theme && theme !== 'default') params.append('theme', theme);
+
+        const layout = document.getElementById('wakatimeLayout')?.value;
+        if (layout && layout !== 'default') params.append('layout', layout);
+
+        const customTitle = document.getElementById('wakatimeCustomTitle')?.value.trim();
+        if (customTitle) params.append('custom_title', customTitle);
+
+        const hide = document.getElementById('wakatimeHide')?.value.trim();
+        if (hide) params.append('hide', hide);
+
+        const langsCount = document.getElementById('wakatimeLangsCount')?.value;
+        if (langsCount) params.append('langs_count', langsCount);
+
+        const lineHeight = document.getElementById('wakatimeLineHeight')?.value;
+        if (lineHeight && lineHeight !== '25') params.append('line_height', lineHeight);
+
+        const apiDomain = document.getElementById('wakatimeApiDomain')?.value.trim();
+        if (apiDomain && apiDomain !== 'wakatime.com') params.append('api_domain', apiDomain);
+
+        const displayFormat = document.getElementById('wakatimeDisplayFormat')?.value;
+        if (displayFormat && displayFormat !== 'time') params.append('display_format', displayFormat);
+
+        if (document.getElementById('wakatimeHideProgress')?.checked) params.append('hide_progress', 'true');
+        if (document.getElementById('wakatimeDisableAnimations')?.checked) params.append('disable_animations', 'true');
+
+        return `${baseUrl}/api/wakatime?${params.toString()}`;
       } else if (cardType === 'trophy') {
         const theme = document.getElementById('trophyTheme')?.value || 'tokyonight';
-        const columns = document.getElementById('trophyColumns')?.value || 7;
         if (theme && theme !== 'default') params.append('theme', theme);
+        
+        const customTitle = document.getElementById('trophyCustomTitle')?.value.trim();
+        if (customTitle) params.append('custom_title', customTitle);
+        
+        const columns = document.getElementById('trophyColumns')?.value || 7;
         params.append('column', columns);
-        params.append('margin_w', '15');
-        params.append('margin_h', '15');
+        
+        const marginW = document.getElementById('trophyMarginW')?.value || 15;
+        params.append('margin_w', marginW);
+        
+        const marginH = document.getElementById('trophyMarginH')?.value || 15;
+        params.append('margin_h', marginH);
+
+        const hide = document.getElementById('trophyHide')?.value.trim();
+        if (hide) params.append('hide', hide);
+
+        if (document.getElementById('trophyIncludeAllCommits')?.checked) params.append('include_all_commits', 'true');
+
+        const excludeRepo = document.getElementById('trophyExcludeRepo')?.value.trim();
+        if (excludeRepo) params.append('exclude_repo', excludeRepo);
+
         return `${baseUrl}/api/trophy?${params.toString()}`;
       } else if (cardType === 'streak') {
         const theme = document.getElementById('streakTheme')?.value || 'tokyonight';
         if (theme && theme !== 'default') params.append('theme', theme);
+        
+        const customTitle = document.getElementById('streakCustomTitle')?.value.trim();
+        if (customTitle) params.append('custom_title', customTitle);
+
         return `${baseUrl}/api/streak?${params.toString()}`;
       } else if (cardType === 'activity-graph') {
         const theme = document.getElementById('activityGraphTheme')?.value || 'tokyonight';
-        const year = document.getElementById('activityYear')?.value;
         if (theme && theme !== 'default') params.append('theme', theme);
+        
+        const customTitle = document.getElementById('activityGraphCustomTitle')?.value.trim();
+        if (customTitle) params.append('custom_title', customTitle);
+        
+        const year = document.getElementById('activityYear')?.value;
         if (year) params.append('year', year);
+        
         return `${baseUrl}/api/activity-graph?${params.toString()}`;
       }
       return null;
@@ -1215,14 +1968,44 @@
     });
 
     // Auto-generate on any option change
-    ['theme', 'showIcons', 'hideBorder', 'hideRank', 'includeAllCommits', 'hideStats', 'customTitle',
-     'layout', 'langsCount', 'repoName', 'showOwner', 'gistId', 'wakatimeUsername', 
-     'topLangsTheme', 'trophyTheme', 'trophyColumns', 'streakTheme', 'activityGraphTheme', 'activityYear'].forEach(id => {
+    const allOptionIds = [
+      // Common
+      'commonHideBorder', 'commonHideTitle', 'commonCardWidth', 'commonBorderRadius', 'commonLocale',
+      'commonTitleColor', 'commonTextColor', 'commonIconColor', 'commonBorderColor', 'commonBgColor',
+      // Stats
+      'theme', 'showIcons', 'hideRank', 'includeAllCommits', 'hideStats', 'showStats', 'customTitle',
+      'excludeRepo', 'lineHeight', 'ringColor', 'numberFormat', 'numberPrecision', 'rankIcon', 'commitsYear',
+      'textBold', 'disableAnimations',
+      // Top Langs
+      'topLangsTheme', 'layout', 'langsCount', 'topLangsHide', 'topLangsExcludeRepo', 'topLangsCustomTitle',
+      'sizeWeight', 'countWeight', 'statsFormat', 'hideProgress', 'topLangsDisableAnimations',
+      // Pin
+      'repoName', 'pinTheme', 'showOwner', 'descriptionLinesCount',
+      // Gist
+      'gistId', 'gistTheme', 'gistShowOwner',
+      // WakaTime
+      'wakatimeUsername', 'wakatimeTheme', 'wakatimeLayout', 'wakatimeCustomTitle', 'wakatimeHide',
+      'wakatimeLangsCount', 'wakatimeLineHeight', 'wakatimeApiDomain', 'wakatimeDisplayFormat',
+      'wakatimeHideProgress', 'wakatimeDisableAnimations',
+      // Trophy
+      'trophyTheme', 'trophyCustomTitle', 'trophyColumns', 'trophyMarginW', 'trophyMarginH',
+      'trophyHide', 'trophyIncludeAllCommits', 'trophyExcludeRepo',
+      // Streak
+      'streakTheme', 'streakCustomTitle',
+      // Activity Graph
+      'activityGraphTheme', 'activityGraphCustomTitle', 'activityYear'
+    ];
+
+    allOptionIds.forEach(id => {
       const el = document.getElementById(id);
       if (el) {
         el.addEventListener('change', () => {
           clearTimeout(generateTimeout);
           generateTimeout = setTimeout(generateCard, 300);
+        });
+        el.addEventListener('input', () => {
+          clearTimeout(generateTimeout);
+          generateTimeout = setTimeout(generateCard, 500);
         });
         if (el.type === 'checkbox') {
           el.addEventListener('click', () => {
