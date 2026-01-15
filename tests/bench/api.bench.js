@@ -5,7 +5,7 @@ import { it, jest } from "@jest/globals";
 import { runAndLogStats } from "./utils.js";
 
 const stats = {
-  name: "Anurag Hazra",
+  name: "lonestill",
   totalStars: 100,
   totalCommits: 200,
   totalIssues: 300,

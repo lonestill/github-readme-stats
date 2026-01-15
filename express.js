@@ -5,6 +5,9 @@ import langCard from "./api/top-langs.js";
 import wakatimeCard from "./api/wakatime.js";
 import gistCard from "./api/gist.js";
 import trophyCard from "./api/trophy.js";
+import streakCard from "./api/streak.js";
+import activityGraphCard from "./api/activity-graph.js";
+import batchApi from "./api/batch.js";
 import express from "express";
 
 const app = express();
@@ -16,6 +19,9 @@ router.get("/top-langs", langCard);
 router.get("/wakatime", wakatimeCard);
 router.get("/gist", gistCard);
 router.get("/trophy", trophyCard);
+router.get("/streak", streakCard);
+router.get("/activity-graph", activityGraphCard);
+router.get("/batch", batchApi);
 
 app.use("/api", router);
 
