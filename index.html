@@ -1879,41 +1879,46 @@
         document.getElementById('cardType').dispatchEvent(new Event('change'));
         document.getElementById('theme').value = 'default';
         document.getElementById('showIcons').checked = false;
-        document.getElementById('hideBorder').checked = true;
+        document.getElementById('commonHideBorder').checked = true;
         document.getElementById('hideRank').checked = false;
         document.getElementById('includeAllCommits').checked = false;
         document.getElementById('hideStats').value = '';
         document.getElementById('customTitle').value = '';
+        document.getElementById('commonHideTitle').checked = false;
       } else if (preset === 'detailed') {
         document.getElementById('cardType').value = 'stats';
         document.getElementById('cardType').dispatchEvent(new Event('change'));
         document.getElementById('theme').value = 'tokyonight';
         document.getElementById('showIcons').checked = true;
-        document.getElementById('hideBorder').checked = false;
+        document.getElementById('commonHideBorder').checked = false;
         document.getElementById('hideRank').checked = false;
         document.getElementById('includeAllCommits').checked = true;
         document.getElementById('hideStats').value = '';
         document.getElementById('customTitle').value = '';
+        document.getElementById('commonHideTitle').checked = false;
+        document.getElementById('showStats').value = 'reviews,prs_merged';
       } else if (preset === 'dark') {
         document.getElementById('cardType').value = 'stats';
         document.getElementById('cardType').dispatchEvent(new Event('change'));
         document.getElementById('theme').value = 'dark';
         document.getElementById('showIcons').checked = true;
-        document.getElementById('hideBorder').checked = true;
+        document.getElementById('commonHideBorder').checked = true;
         document.getElementById('hideRank').checked = false;
         document.getElementById('includeAllCommits').checked = false;
         document.getElementById('hideStats').value = '';
         document.getElementById('customTitle').value = '';
+        document.getElementById('commonHideTitle').checked = false;
       } else if (preset === 'colorful') {
         document.getElementById('cardType').value = 'stats';
         document.getElementById('cardType').dispatchEvent(new Event('change'));
         document.getElementById('theme').value = 'radical';
         document.getElementById('showIcons').checked = true;
-        document.getElementById('hideBorder').checked = false;
+        document.getElementById('commonHideBorder').checked = false;
         document.getElementById('hideRank').checked = false;
         document.getElementById('includeAllCommits').checked = false;
         document.getElementById('hideStats').value = '';
         document.getElementById('customTitle').value = '';
+        document.getElementById('commonHideTitle').checked = false;
       }
       
       generateCard();
