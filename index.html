@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Readme Stats - Card Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      min-height: 100vh;
+    }
+    .card-preview {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .code-block {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+    .theme-select {
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 8px 12px;
+    }
+  </style>
+</head>
+<body class="text-slate-200">
+  <div class="container mx-auto px-4 py-8 max-w-7xl">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        GitHub Readme Stats
+      </h1>
+      <p class="text-slate-400">Generate beautiful stats cards for your GitHub profile</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Configuration Panel -->
+      <div class="space-y-6">
+        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
+          <h2 class="text-2xl font-bold mb-4 text-blue-400">Card Configuration</h2>
+          
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium mb-2">GitHub Username</label>
+              <input 
+                type="text" 
+                id="username" 
+                value="lonestill"
+                class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                placeholder="Enter your GitHub username">
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">Card Type</label>
+              <select id="cardType" class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+                <option value="stats">Stats Card</option>
+                <option value="top-langs">Top Languages</option>
+                <option value="pin">Repository Pin</option>
+                <option value="gist">Gist Card</option>
+                <option value="wakatime">WakaTime Stats</option>
+              </select>
+            </div>
+
+            <!-- Stats Card Options -->
+            <div id="statsOptions" class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium mb-2">Theme</label>
+                <select id="theme" class="theme-select w-full">
+                  <option value="default">Default</option>
+                  <option value="dark">Dark</option>
+                  <option value="radical">Radical</option>
+                  <option value="merko">Merko</option>
+                  <option value="gruvbox">Gruvbox</option>
+                  <option value="tokyonight">Tokyo Night</option>
+                  <option value="onedark">One Dark</option>
+                  <option value="cobalt">Cobalt</option>
+                  <option value="synthwave">Synthwave</option>
+                  <option value="highcontrast">High Contrast</option>
+                  <option value="dracula">Dracula</option>
+                  <option value="transparent">Transparent</option>
+                </select>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium mb-2">Show Icons</label>
+                  <input type="checkbox" id="showIcons" class="w-5 h-5">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Hide Border</label>
+                  <input type="checkbox" id="hideBorder" class="w-5 h-5">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Hide Rank</label>
+                  <input type="checkbox" id="hideRank" class="w-5 h-5">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Include All Commits</label>
+                  <input type="checkbox" id="includeAllCommits" class="w-5 h-5">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium mb-2">Hide Stats (comma-separated)</label>
+                <input 
+                  type="text" 
+                  id="hideStats"
+                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="stars,commits,prs,issues,contribs">
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium mb-2">Custom Title</label>
+                <input 
+                  type="text" 
+                  id="customTitle"
+                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="Custom card title">
+              </div>
+            </div>
+
+            <!-- Top Langs Options -->
+            <div id="topLangsOptions" class="space-y-4 hidden">
+              <div>
+                <label class="block text-sm font-medium mb-2">Layout</label>
+                <select id="layout" class="theme-select w-full">
+                  <option value="normal">Normal</option>
+                  <option value="compact">Compact</option>
+                  <option value="donut">Donut</option>
+                  <option value="donut-vertical">Donut Vertical</option>
+                  <option value="pie">Pie</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">Languages Count (1-20)</label>
+                <input 
+                  type="number" 
+                  id="langsCount"
+                  min="1"
+                  max="20"
+                  value="5"
+                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+              </div>
+            </div>
+
+            <!-- Pin Options -->
+            <div id="pinOptions" class="space-y-4 hidden">
+              <div>
+                <label class="block text-sm font-medium mb-2">Repository Name</label>
+                <input 
+                  type="text" 
+                  id="repoName"
+                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="repository-name">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">Show Owner</label>
+                <input type="checkbox" id="showOwner" class="w-5 h-5">
+              </div>
+            </div>
+
+            <!-- Gist Options -->
+            <div id="gistOptions" class="space-y-4 hidden">
+              <div>
+                <label class="block text-sm font-medium mb-2">Gist ID</label>
+                <input 
+                  type="text" 
+                  id="gistId"
+                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="bbfce31e0217a3689c8d961a356cb10d">
+              </div>
+            </div>
+
+            <!-- WakaTime Options -->
+            <div id="wakatimeOptions" class="space-y-4 hidden">
+              <div>
+                <label class="block text-sm font-medium mb-2">WakaTime Username</label>
+                <input 
+                  type="text" 
+                  id="wakatimeUsername"
+                  class="w-full bg-slate-900 border border-slate-600 rounded px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="wakatime-username">
+              </div>
+            </div>
+
+            <button 
+              onclick="generateCard()"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              Generate Card
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preview Panel -->
+      <div class="space-y-6">
+        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
+          <h2 class="text-2xl font-bold mb-4 text-purple-400">Preview</h2>
+          <div id="preview" class="card-preview min-h-[200px] flex items-center justify-center">
+            <p class="text-slate-500">Configure your card and click "Generate Card" to see preview</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
+          <h2 class="text-2xl font-bold mb-4 text-green-400">Markdown Code</h2>
+          <div class="code-block" id="markdownCode">
+            <code>Configure your card to generate markdown code</code>
+          </div>
+          <button 
+            onclick="copyMarkdown()"
+            class="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors">
+            Copy Markdown
+          </button>
+        </div>
+
+        <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
+          <h2 class="text-2xl font-bold mb-4 text-yellow-400">Direct URL</h2>
+          <div class="code-block" id="directUrl">
+            <code>Configure your card to generate URL</code>
+          </div>
+          <button 
+            onclick="copyUrl()"
+            class="mt-4 w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded transition-colors">
+            Copy URL
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const baseUrl = window.location.origin;
+
+    function getCardType() {
+      return document.getElementById('cardType').value;
+    }
+
+    function getUsername() {
+      return document.getElementById('username').value || 'lonestill';
+    }
+
+    function buildUrl() {
+      const cardType = getCardType();
+      const username = getUsername();
+      const params = new URLSearchParams();
+      
+      params.append('username', username);
+
+      if (cardType === 'stats') {
+        const theme = document.getElementById('theme').value;
+        if (theme && theme !== 'default') params.append('theme', theme);
+        if (document.getElementById('showIcons').checked) params.append('show_icons', 'true');
+        if (document.getElementById('hideBorder').checked) params.append('hide_border', 'true');
+        if (document.getElementById('hideRank').checked) params.append('hide_rank', 'true');
+        if (document.getElementById('includeAllCommits').checked) params.append('include_all_commits', 'true');
+        
+        const hideStats = document.getElementById('hideStats').value.trim();
+        if (hideStats) params.append('hide', hideStats);
+        
+        const customTitle = document.getElementById('customTitle').value.trim();
+        if (customTitle) params.append('custom_title', customTitle);
+
+        return `${baseUrl}/api?${params.toString()}`;
+      } else if (cardType === 'top-langs') {
+        const layout = document.getElementById('layout').value;
+        const langsCount = document.getElementById('langsCount').value;
+        if (layout && layout !== 'normal') params.append('layout', layout);
+        if (langsCount) params.append('langs_count', langsCount);
+        return `${baseUrl}/api/top-langs?${params.toString()}`;
+      } else if (cardType === 'pin') {
+        const repoName = document.getElementById('repoName').value.trim();
+        if (!repoName) {
+          alert('Please enter repository name');
+          return null;
+        }
+        params.append('repo', repoName);
+        if (document.getElementById('showOwner').checked) params.append('show_owner', 'true');
+        return `${baseUrl}/api/pin?${params.toString()}`;
+      } else if (cardType === 'gist') {
+        const gistId = document.getElementById('gistId').value.trim();
+        if (!gistId) {
+          alert('Please enter Gist ID');
+          return null;
+        }
+        return `${baseUrl}/api/gist?id=${gistId}`;
+      } else if (cardType === 'wakatime') {
+        const wakatimeUsername = document.getElementById('wakatimeUsername').value.trim();
+        if (!wakatimeUsername) {
+          alert('Please enter WakaTime username');
+          return null;
+        }
+        return `${baseUrl}/api/wakatime?username=${wakatimeUsername}`;
+      }
+      return null;
+    }
+
+    function generateCard() {
+      const url = buildUrl();
+      if (!url) return;
+
+      // Update preview
+      const previewDiv = document.getElementById('preview');
+      previewDiv.innerHTML = `<img src="${url}" alt="GitHub Stats Card" style="max-width: 100%; height: auto;" onerror="this.parentElement.innerHTML='<p class=\'text-red-500\'>Error loading card. Please check your configuration.</p>'">`;
+
+      // Update markdown code
+      const markdownCode = `[![GitHub Stats](${url})](https://github.com/${getUsername()})`;
+      document.getElementById('markdownCode').innerHTML = `<code>${escapeHtml(markdownCode)}</code>`;
+
+      // Update direct URL
+      document.getElementById('directUrl').innerHTML = `<code>${escapeHtml(url)}</code>`;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function copyMarkdown() {
+      const code = document.getElementById('markdownCode').querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('Markdown code copied to clipboard!');
+      });
+    }
+
+    function copyUrl() {
+      const code = document.getElementById('directUrl').querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('URL copied to clipboard!');
+      });
+    }
+
+    // Show/hide options based on card type
+    document.getElementById('cardType').addEventListener('change', function() {
+      const cardType = this.value;
+      document.getElementById('statsOptions').classList.toggle('hidden', cardType !== 'stats');
+      document.getElementById('topLangsOptions').classList.toggle('hidden', cardType !== 'top-langs');
+      document.getElementById('pinOptions').classList.toggle('hidden', cardType !== 'pin');
+      document.getElementById('gistOptions').classList.toggle('hidden', cardType !== 'gist');
+      document.getElementById('wakatimeOptions').classList.toggle('hidden', cardType !== 'wakatime');
+    });
+
+    // Auto-generate on username change
+    document.getElementById('username').addEventListener('input', function() {
+      if (this.value.trim()) {
+        generateCard();
+      }
+    });
+  </script>
+</body>
+</html>

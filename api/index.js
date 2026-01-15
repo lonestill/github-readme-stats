@@ -68,19 +68,19 @@ export default async (req, res) => {
   }
 
   if (locale && !isLocaleAvailable(locale)) {
-    return res.send(
-      renderError({
-        message: "Something went wrong",
-        secondaryMessage: "Language not found",
-        renderOptions: {
-          title_color,
-          text_color,
-          bg_color,
-          border_color,
-          theme,
-        },
-      }),
-    );
+      return res.send(
+        renderError({
+          message: "Something went wrong",
+          secondaryMessage: "Language not found",
+          renderOptions: {
+            title_color,
+            text_color,
+            bg_color,
+            border_color,
+            theme: theme || "default",
+          },
+        }),
+      );
   }
 
   try {
@@ -145,7 +145,7 @@ export default async (req, res) => {
             text_color,
             bg_color,
             border_color,
-            theme,
+            theme: theme || "default",
             show_repo_link: !(err instanceof MissingParamError),
           },
         }),

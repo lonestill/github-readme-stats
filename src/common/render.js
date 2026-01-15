@@ -148,9 +148,12 @@ const renderError = ({
     text_color,
     bg_color,
     border_color,
-    theme = "default",
+    theme,
     show_repo_link = true,
-  } = renderOptions;
+  } = renderOptions || {};
+  
+  // Ensure theme always has a default value
+  const safeTheme = theme || "default";
 
   // returns theme based colors with proper overrides and defaults
   const { titleColor, textColor, bgColor, borderColor } = getCardColors({
@@ -160,7 +163,7 @@ const renderError = ({
     bg_color,
     border_color,
     ring_color: "",
-    theme,
+    theme: safeTheme,
   });
 
   return `
