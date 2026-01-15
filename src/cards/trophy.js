@@ -2,7 +2,9 @@
 
 import { Card } from "../common/Card.js";
 import { getCardColors } from "../common/color.js";
-import { flexLayout } from "../common/render.js";
+import { kFormatter } from "../common/fmt.js";
+import { icons } from "../common/icons.js";
+import { flexLayout, measureText } from "../common/render.js";
 
 /**
  * Trophy thresholds for different categories
@@ -30,54 +32,64 @@ const getTrophyLevel = (value, thresholds) => {
 };
 
 /**
- * Trophy SVG icons for different levels
+ * Trophy level colors and labels
  */
-const trophyIcons = {
-  gold: `<path d="M8 0L9.5 5.5L15 4L11 8L12.5 13.5L8 11L3.5 13.5L5 8L1 4L6.5 5.5L8 0Z" fill="#FFD700" stroke="#FFA500" stroke-width="0.5"/>`,
-  silver: `<path d="M8 0L9.5 5.5L15 4L11 8L12.5 13.5L8 11L3.5 13.5L5 8L1 4L6.5 5.5L8 0Z" fill="#C0C0C0" stroke="#808080" stroke-width="0.5"/>`,
-  bronze: `<path d="M8 0L9.5 5.5L15 4L11 8L12.5 13.5L8 11L3.5 13.5L5 8L1 4L6.5 5.5L8 0Z" fill="#CD7F32" stroke="#8B4513" stroke-width="0.5"/>`,
+const trophyLevels = {
+  gold: { color: "#FFD700", label: "🥇" },
+  silver: { color: "#C0C0C0", label: "🥈" },
+  bronze: { color: "#CD7F32", label: "🥉" },
 };
 
 /**
- * Trophy labels
+ * Trophy category icons and labels
  */
-const trophyLabels = {
-  stars: "⭐ Stars",
-  commits: "💾 Commits",
-  prs: "🔀 Pull Requests",
-  issues: "🐛 Issues",
-  followers: "👥 Followers",
-  repos: "📦 Repositories",
+const trophyCategories = {
+  stars: { icon: icons.star, label: "Stars" },
+  commits: { icon: icons.commits, label: "Commits" },
+  prs: { icon: icons.prs, label: "PRs" },
+  issues: { icon: icons.issues, label: "Issues" },
+  followers: { icon: icons.contribs, label: "Followers" },
+  repos: { icon: icons.icon, label: "Repos" },
 };
 
 /**
- * Create a trophy item SVG
- * @param {string} label - Trophy label
+ * Create a compact trophy badge
+ * @param {string} category - Trophy category key
  * @param {string} level - Trophy level (gold/silver/bronze)
  * @param {number} value - Trophy value
- * @param {number} index - Item index
- * @returns {string} Trophy item SVG
+ * @param {string} textColor - Text color
+ * @param {string} iconColor - Icon color
+ * @returns {string} Trophy badge SVG
  */
-const createTrophyItem = (label, level, value, index) => {
-  const trophyIcon = trophyIcons[level] || "";
-  const levelColor = {
-    gold: "#FFD700",
-    silver: "#C0C0C0",
-    bronze: "#CD7F32",
-  }[level] || "#808080";
+const createTrophyBadge = (category, level, value, textColor, iconColor) => {
+  const categoryInfo = trophyCategories[category];
+  const levelInfo = trophyLevels[level];
+  const formattedValue = kFormatter(value);
 
-  const staggerDelay = index * 100;
-
-  return `
-    <g class="stagger" style="animation-delay: ${staggerDelay}ms" transform="translate(25, 0)">
-      <svg x="0" y="-8" width="20" height="20" viewBox="0 0 16 16">
-        ${trophyIcon}
-      </svg>
-      <text class="trophy-label" x="30" y="5">${label}:</text>
-      <text class="trophy-value" x="180" y="5" fill="${levelColor}">${value}</text>
-      <text class="trophy-level" x="220" y="5" fill="${levelColor}">(${level})</text>
-    </g>
+  const iconSvg = `
+    <svg class="trophy-icon" viewBox="0 0 16 16" width="14" height="14">
+      ${categoryInfo.icon}
+    </svg>
   `;
+
+  const trophyEmoji = levelInfo.label;
+  const levelText = level.charAt(0).toUpperCase() + level.slice(1);
+
+  return flexLayout({
+    items: [
+      iconSvg,
+      `<text class="trophy-category" fill="${textColor}">${categoryInfo.label}</text>`,
+      `<text class="trophy-value" fill="${levelInfo.color}">${formattedValue}</text>`,
+      `<text class="trophy-level" fill="${levelInfo.color}">${trophyEmoji}</text>`,
+    ],
+    sizes: [
+      14,
+      measureText(categoryInfo.label, 11),
+      measureText(formattedValue, 11),
+      measureText(trophyEmoji, 11),
+    ],
+    gap: 8,
+  }).join("");
 };
 
 /**
@@ -103,20 +115,21 @@ const renderTrophyCard = (stats, options = {}) => {
     card_width,
     title_color,
     text_color,
+    icon_color,
     bg_color,
     theme = "default",
     custom_title,
     border_radius,
     border_color,
-    column = 7,
-    margin_w = 15,
-    margin_h = 15,
-    rank = "SSS,SS,S,AAA,AA,A,B,C",
+    column = 3,
+    margin_w = 10,
+    margin_h = 10,
   } = options;
 
-  const { titleColor, textColor, bgColor, borderColor } = getCardColors({
+  const { titleColor, textColor, iconColor: defaultIconColor, bgColor, borderColor } = getCardColors({
     title_color,
     text_color,
+    icon_color,
     bg_color,
     border_color,
     theme,
@@ -128,72 +141,42 @@ const renderTrophyCard = (stats, options = {}) => {
   if (!hide.includes("stars")) {
     const level = getTrophyLevel(totalStars, TROPHY_THRESHOLDS.stars);
     if (level) {
-      trophies.push({
-        label: trophyLabels.stars,
-        level,
-        value: totalStars,
-        key: "stars",
-      });
+      trophies.push({ category: "stars", level, value: totalStars });
     }
   }
 
   if (!hide.includes("commits")) {
     const level = getTrophyLevel(totalCommits, TROPHY_THRESHOLDS.commits);
     if (level) {
-      trophies.push({
-        label: trophyLabels.commits,
-        level,
-        value: totalCommits,
-        key: "commits",
-      });
+      trophies.push({ category: "commits", level, value: totalCommits });
     }
   }
 
   if (!hide.includes("prs")) {
     const level = getTrophyLevel(totalPRs, TROPHY_THRESHOLDS.prs);
     if (level) {
-      trophies.push({
-        label: trophyLabels.prs,
-        level,
-        value: totalPRs,
-        key: "prs",
-      });
+      trophies.push({ category: "prs", level, value: totalPRs });
     }
   }
 
   if (!hide.includes("issues")) {
     const level = getTrophyLevel(totalIssues, TROPHY_THRESHOLDS.issues);
     if (level) {
-      trophies.push({
-        label: trophyLabels.issues,
-        level,
-        value: totalIssues,
-        key: "issues",
-      });
+      trophies.push({ category: "issues", level, value: totalIssues });
     }
   }
 
   if (!hide.includes("followers")) {
     const level = getTrophyLevel(followers, TROPHY_THRESHOLDS.followers);
     if (level) {
-      trophies.push({
-        label: trophyLabels.followers,
-        level,
-        value: followers,
-        key: "followers",
-      });
+      trophies.push({ category: "followers", level, value: followers });
     }
   }
 
   if (!hide.includes("repos")) {
     const level = getTrophyLevel(totalRepos, TROPHY_THRESHOLDS.repos);
     if (level) {
-      trophies.push({
-        label: trophyLabels.repos,
-        level,
-        value: totalRepos,
-        key: "repos",
-      });
+      trophies.push({ category: "repos", level, value: totalRepos });
     }
   }
 
@@ -202,7 +185,7 @@ const renderTrophyCard = (stats, options = {}) => {
     const card = new Card({
       defaultTitle: custom_title || "GitHub Trophies",
       width: 400,
-      height: hide_title ? 150 : 200,
+      height: hide_title ? 120 : 170,
       border_radius,
       colors: {
         titleColor,
@@ -215,10 +198,10 @@ const renderTrophyCard = (stats, options = {}) => {
     card.setHideBorder(hide_border);
     card.setHideTitle(hide_title);
     card.setCSS(`
-      .trophy-message { font: 400 16px 'Segoe UI', Ubuntu, Sans-Serif; fill: ${textColor}; }
+      .trophy-message { font: 400 14px 'Segoe UI', Ubuntu, Sans-Serif; fill: ${textColor}; }
     `);
 
-    const yPos = hide_title ? 75 : 100;
+    const yPos = hide_title ? 60 : 100;
     return card.render(`
       <text x="200" y="${yPos}" text-anchor="middle" class="trophy-message">
         Keep coding to earn trophies! 🏆
@@ -226,15 +209,18 @@ const renderTrophyCard = (stats, options = {}) => {
     `);
   }
 
-  // Calculate card dimensions
-  const itemsPerRow = column ? parseInt(column, 10) : 7;
-  const marginW = margin_w ? parseInt(margin_w, 10) : 15;
-  const marginH = margin_h ? parseInt(margin_h, 10) : 15;
+  // Calculate card dimensions for grid layout
+  const itemsPerRow = column ? parseInt(column, 10) : 3;
+  const marginW = margin_w ? parseInt(margin_w, 10) : 10;
+  const marginH = margin_h ? parseInt(margin_h, 10) : 10;
   const rowCount = Math.ceil(trophies.length / itemsPerRow);
-  const itemWidth = 100;
-  const itemHeight = 50;
-  const cardWidth = card_width || itemsPerRow * (itemWidth + marginW) + marginW;
-  const cardHeight = rowCount * (itemHeight + marginH) + marginH + (hide_title ? 0 : 50);
+  
+  // Estimate badge width (icon + text + value + emoji + gaps)
+  const badgeWidth = 120;
+  const badgeHeight = 25;
+  
+  const cardWidth = card_width || itemsPerRow * badgeWidth + (itemsPerRow + 1) * marginW;
+  const cardHeight = rowCount * badgeHeight + (rowCount + 1) * marginH + (hide_title ? 0 : 50);
 
   const card = new Card({
     defaultTitle: custom_title || "GitHub Trophies",
@@ -244,6 +230,7 @@ const renderTrophyCard = (stats, options = {}) => {
     colors: {
       titleColor,
       textColor,
+      iconColor: defaultIconColor,
       bgColor,
       borderColor,
     },
@@ -252,35 +239,37 @@ const renderTrophyCard = (stats, options = {}) => {
   card.setHideBorder(hide_border);
   card.setHideTitle(hide_title);
   card.setCSS(`
-    .trophy-label { font: 400 12px 'Segoe UI', Ubuntu, Sans-Serif; fill: ${textColor}; }
-    .trophy-value { font: 600 12px 'Segoe UI', Ubuntu, Sans-Serif; }
-    .trophy-level { font: 400 10px 'Segoe UI', Ubuntu, Sans-Serif; }
-    .stagger {
-      opacity: 0;
-      animation: fadeIn 0.3s ease-in-out forwards;
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
+    .trophy-icon { fill: ${defaultIconColor}; }
+    .trophy-category { font: 400 11px 'Segoe UI', Ubuntu, Sans-Serif; }
+    .trophy-value { font: 600 11px 'Segoe UI', Ubuntu, Sans-Serif; }
+    .trophy-level { font: 400 12px 'Segoe UI', Ubuntu, Sans-Serif; }
   `);
 
-  // Create trophy items
-  const trophyItems = trophies.map((trophy, index) => {
+  // Create trophy badges in grid layout
+  const trophyBadges = trophies.map((trophy, index) => {
     const row = Math.floor(index / itemsPerRow);
     const col = index % itemsPerRow;
-    const x = marginW + col * (itemWidth + marginW);
-    const y = (hide_title ? marginH : 50) + row * (itemHeight + marginH);
+    const x = marginW + col * (badgeWidth + marginW);
+    const y = (hide_title ? marginH : 50) + row * (badgeHeight + marginH);
+
+    const badge = createTrophyBadge(
+      trophy.category,
+      trophy.level,
+      trophy.value,
+      textColor,
+      defaultIconColor,
+    );
 
     return `
       <g transform="translate(${x}, ${y})">
-        ${createTrophyItem(trophy.label, trophy.level, trophy.value, index)}
+        ${badge}
       </g>
     `;
   });
 
   return card.render(`
     <svg x="0" y="0">
-      ${trophyItems.join("")}
+      ${trophyBadges.join("")}
     </svg>
   `);
 };
