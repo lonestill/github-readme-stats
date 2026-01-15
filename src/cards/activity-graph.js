@@ -98,12 +98,18 @@ const renderActivityGraphCard = (activityData, options = {}) => {
   const yStart = hide_title ? 30 : 60;
   const xStart = 50;
 
-  // Render graph
+  // Render graph - ensure we have 7 days per week
   const cells = displayWeeks.map((week, weekIndex) => {
-    return week.contributionDays.map((day, dayIndex) => {
+    const days = week.contributionDays || [];
+    // Pad to 7 days if needed
+    while (days.length < 7) {
+      days.push({ date: "", contributionCount: 0 });
+    }
+    
+    return days.slice(0, 7).map((day, dayIndex) => {
       const x = xStart + weekIndex * weekWidth;
       const y = yStart + dayIndex * weekWidth;
-      const intensity = getIntensity(day.contributionCount);
+      const intensity = getIntensity(day.contributionCount || 0);
       const color = getColor(intensity);
       
       return `<rect 
@@ -113,8 +119,8 @@ const renderActivityGraphCard = (activityData, options = {}) => {
         height="${cellSize}" 
         fill="${color}" 
         rx="2"
-        data-count="${day.contributionCount}"
-        data-date="${day.date}"/>`;
+        data-count="${day.contributionCount || 0}"
+        data-date="${day.date || ""}"/>`;
     }).join("");
   }).join("");
 

@@ -56,8 +56,8 @@ const calculateStreak = (calendar) => {
     });
   });
 
-  // Sort by date (newest first)
-  allDays.sort((a, b) => new Date(b.date) - new Date(a.date));
+  // Sort by date (oldest first for easier processing)
+  allDays.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   let currentStreak = 0;
   let currentStreakStart = null;
@@ -67,6 +67,7 @@ const calculateStreak = (calendar) => {
   let tempStreak = 0;
   let tempStreakStart = null;
 
+  // Calculate streaks
   for (let i = 0; i < allDays.length; i++) {
     const day = allDays[i];
     const hasContributions = day.count > 0;
@@ -76,42 +77,47 @@ const calculateStreak = (calendar) => {
         tempStreakStart = day.date;
       }
       tempStreak++;
-    } else {
+      
+      // Update longest streak if current is longer
       if (tempStreak > longestStreak) {
         longestStreak = tempStreak;
         longestStreakStart = tempStreakStart;
-        longestStreakEnd = i > 0 ? allDays[i - 1].date : day.date;
+        longestStreakEnd = day.date;
       }
+    } else {
       tempStreak = 0;
       tempStreakStart = null;
     }
+  }
 
-    // Current streak (from today backwards)
-    if (i === 0 && hasContributions) {
-      currentStreak = 1;
-      currentStreakStart = day.date;
-    } else if (i > 0 && hasContributions && currentStreak > 0) {
-      const prevDate = new Date(allDays[i - 1].date);
-      const currDate = new Date(day.date);
-      const diffDays = Math.floor((prevDate - currDate) / (1000 * 60 * 60 * 24));
-      
-      if (diffDays === 1) {
+  // Calculate current streak (from today backwards)
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  // Find today or most recent day
+  let todayIndex = -1;
+  for (let i = allDays.length - 1; i >= 0; i--) {
+    const dayDate = new Date(allDays[i].date);
+    dayDate.setHours(0, 0, 0, 0);
+    if (dayDate <= today) {
+      todayIndex = i;
+      break;
+    }
+  }
+
+  if (todayIndex >= 0) {
+    // Count backwards from today
+    for (let i = todayIndex; i >= 0; i--) {
+      const day = allDays[i];
+      if (day.count > 0) {
         currentStreak++;
         if (!currentStreakStart) {
           currentStreakStart = day.date;
         }
       } else {
-        currentStreak = 0;
-        currentStreakStart = null;
+        break; // Streak broken
       }
     }
-  }
-
-  // Check if temp streak is longer
-  if (tempStreak > longestStreak) {
-    longestStreak = tempStreak;
-    longestStreakStart = tempStreakStart;
-    longestStreakEnd = allDays[0]?.date || null;
   }
 
   return {
